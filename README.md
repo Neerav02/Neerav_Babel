@@ -2,7 +2,7 @@
   <h1>✨ Neerav Babel | Interactive Portfolio</h1>
   <p>A highly interactive, 3D-animated, and terminal-integrated personal portfolio built with pure HTML, CSS, and JavaScript.</p>
   
-  <a href="https://neerav02.github.io/Neerav_Babel/"><strong>View Live Demo »</strong></a>
+  <a href="https://neerav-babel-portfolio.vercel.app"><strong>View Live Demo (Vercel) »</strong></a>
   <br />
   <br />
 </div>
