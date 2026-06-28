@@ -3196,10 +3196,16 @@
             document.body.style.overflow = '';
         });
 
-        // Submit Button Ripple
+        // Submit Button Ripple & Real FormSubmit AJAX Submission
         document.querySelectorAll('.btn-submit').forEach(btn => {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
+                const form = document.getElementById('contactForm');
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
                 const rect = this.getBoundingClientRect();
                 const ripple = document.createElement('span');
                 ripple.classList.add('ripple');
@@ -3208,16 +3214,41 @@
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
 
-                setTimeout(() => {
-                    const form = document.getElementById('contactForm');
-                    if (form.checkValidity()) {
-                        form.reset();
-                        const txt = this.innerText;
-                        this.innerText = "Sent Successfully!";
-                        this.style.background = "var(--dusty-rose)";
-                        setTimeout(() => { this.innerText = txt; this.style.background = ""; }, 3000);
-                    } else form.reportValidity();
-                }, 400);
+                const origText = this.innerText;
+                this.innerText = "Sending...";
+                this.disabled = true;
+
+                const formData = new FormData(form);
+                const object = {};
+                formData.forEach((value, key) => object[key] = value);
+
+                fetch("https://formsubmit.co/ajax/babelneerav299@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(object)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    form.reset();
+                    this.innerText = "Sent Successfully!";
+                    this.style.background = "var(--dusty-rose)";
+                    setTimeout(() => { 
+                        this.innerText = origText; 
+                        this.style.background = ""; 
+                        this.disabled = false;
+                    }, 4000);
+                })
+                .catch(error => {
+                    console.error("Form error:", error);
+                    this.innerText = "Error! Try Again";
+                    setTimeout(() => { 
+                        this.innerText = origText; 
+                        this.disabled = false;
+                    }, 4000);
+                });
             });
         });
 
