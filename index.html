@@ -2089,9 +2089,17 @@
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(39, 201, 63, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(39, 201, 63, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(39, 201, 63, 0);
+            }
         }
 
         /* Scope Estimator Widget */
@@ -2127,7 +2135,8 @@
             text-align: center;
         }
 
-        .estimator-opt:hover, .estimator-opt.selected {
+        .estimator-opt:hover,
+        .estimator-opt.selected {
             border-color: var(--burnt-amber);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(201, 123, 58, 0.15);
@@ -2223,6 +2232,7 @@
             flex-direction: column;
             gap: 15px;
         }
+
         .faq-item {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -2230,6 +2240,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
         }
+
         .faq-question {
             padding: 22px 28px;
             font-size: 17px;
@@ -2241,15 +2252,18 @@
             align-items: center;
             user-select: none;
         }
+
         .faq-question::after {
             content: '+';
             font-size: 22px;
             color: var(--burnt-amber);
             transition: transform 0.3s ease;
         }
+
         .faq-item.active .faq-question::after {
             transform: rotate(45deg);
         }
+
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -2260,6 +2274,7 @@
             opacity: 0.85;
             color: var(--text-color);
         }
+
         .faq-item.active .faq-answer {
             max-height: 200px;
             padding: 0 28px 22px 28px;
@@ -2268,15 +2283,22 @@
         /* Developer Terminal Modal */
         .terminal-modal {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.75);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(8px);
             z-index: 10000;
             display: none;
             align-items: center;
             justify-content: center;
         }
-        .terminal-modal.active { display: flex; }
+
+        .terminal-modal.active {
+            display: flex;
+        }
+
         .terminal-window-popup {
             width: 700px;
             max-width: 92%;
@@ -2284,12 +2306,13 @@
             background: #0d1117;
             border: 1px solid #30363d;
             border-radius: 12px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             font-family: monospace;
         }
+
         .terminal-topbar {
             background: #161b22;
             padding: 12px 16px;
@@ -2298,8 +2321,19 @@
             justify-content: space-between;
             border-bottom: 1px solid #30363d;
         }
-        .terminal-dots { display: flex; gap: 8px; }
-        .terminal-dot-btn { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-dot-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
         .terminal-screen {
             flex: 1;
             padding: 20px;
@@ -2308,8 +2342,19 @@
             font-size: 14px;
             line-height: 1.6;
         }
-        .term-input-line { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-        .term-prompt { color: #7fe435; font-weight: bold; }
+
+        .term-input-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .term-prompt {
+            color: #7fe435;
+            font-weight: bold;
+        }
+
         .term-input {
             background: transparent;
             border: none;
@@ -2493,7 +2538,8 @@
                 <button class="chat-close" id="chat-close">&times;</button>
             </div>
             <div class="chat-body" id="chat-body">
-                <div class="chat-msg msg-ai">Hi! I'm Neerav's portfolio assistant. Ask me about his projects, availability, tech stack, or how he can help your product.</div>
+                <div class="chat-msg msg-ai">Hi! I'm Neerav's portfolio assistant. Ask me about his projects,
+                    availability, tech stack, or how he can help your product.</div>
             </div>
             <div class="chat-input-area">
                 <input type="text" class="chat-input" id="chat-input" placeholder="Ask anything...">
@@ -2546,19 +2592,28 @@
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content" id="hero-content">
             <div class="live-status-pill">
-                <span class="pulse-dot"></span> 
+                <span class="pulse-dot"></span>
                 <span>Available for Q3 Contracts &bull; Bangalore <strong id="hero-local-time">--:--</strong></span>
             </div>
             <h1 class="hero-name">Neerav Babel</h1>
             <h2 class="hero-subtitle">I am a <span class="typewriter" id="typewriter"></span></h2>
-            <p class="hero-tagline">I build AI-powered full-stack systems and backend APIs for SaaS, e-commerce, and logistics startups — helping founders ship production-ready products without hiring a full engineering team.</p>
+            <p class="hero-tagline">I build AI-powered full-stack systems and backend APIs for SaaS, e-commerce, and
+                logistics startups — helping founders ship production-ready products without hiring a full engineering
+                team.</p>
             <div class="cta-group">
                 <a href="#projects" class="btn btn-primary magnetic">View My Work</a>
-                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank" class="btn btn-primary magnetic" style="background: linear-gradient(135deg, #C97B3A, #7B2D42);">📞 Book a Free Call</a>
-                <a href="Neerav_Babel_Resume.pdf" target="_blank" class="btn btn-outline magnetic">Download CV</a>
+                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank"
+                    class="btn btn-primary magnetic" style="background: linear-gradient(135deg, #C97B3A, #7B2D42);">📞
+                    Book a Free Call</a>
+                <a href="Neerav_Babel_Resume (2).pdf" target="_blank" class="btn btn-outline magnetic">Download CV</a>
             </div>
-            <div style="margin-top: 30px; font-size: 12px; color: var(--text-color); opacity: 0.6; cursor: pointer;" id="open-terminal-hint">
-                💡 Hint: Press <kbd style="background: rgba(123,45,66,0.2); padding: 2px 6px; border-radius: 4px; color: var(--rich-burgundy); font-weight:bold;">Ctrl</kbd> + <kbd style="background: rgba(123,45,66,0.2); padding: 2px 6px; border-radius: 4px; color: var(--rich-burgundy); font-weight:bold;">~</kbd> (or click here) to launch interactive shell
+            <div style="margin-top: 30px; font-size: 12px; color: var(--text-color); opacity: 0.6; cursor: pointer;"
+                id="open-terminal-hint">
+                💡 Hint: Press <kbd
+                    style="background: rgba(123,45,66,0.2); padding: 2px 6px; border-radius: 4px; color: var(--rich-burgundy); font-weight:bold;">Ctrl</kbd>
+                + <kbd
+                    style="background: rgba(123,45,66,0.2); padding: 2px 6px; border-radius: 4px; color: var(--rich-burgundy); font-weight:bold;">~</kbd>
+                (or click here) to launch interactive shell
             </div>
         </div>
         <div class="scroll-indicator">
@@ -2719,7 +2774,8 @@
             <div class="service-card">
                 <div class="service-icon">🧠</div>
                 <h3>AI Integrations</h3>
-                <p>LangChain RAG pipelines, intelligent chatbots, computer vision APIs, and custom ML models — turning your data into automated decision-making.</p>
+                <p>LangChain RAG pipelines, intelligent chatbots, computer vision APIs, and custom ML models — turning
+                    your data into automated decision-making.</p>
                 <div class="service-tags">
                     <span>LangChain</span><span>RAG</span><span>YOLOv11</span><span>OpenAI</span>
                 </div>
@@ -2727,7 +2783,8 @@
             <div class="service-card">
                 <div class="service-icon">🚀</div>
                 <h3>Full-Stack SaaS Products</h3>
-                <p>React/Next.js frontends, FastAPI/Node backends, auth, payments, dashboards — end-to-end products shipped production-ready.</p>
+                <p>React/Next.js frontends, FastAPI/Node backends, auth, payments, dashboards — end-to-end products
+                    shipped production-ready.</p>
                 <div class="service-tags">
                     <span>React</span><span>FastAPI</span><span>Stripe</span><span>OAuth</span>
                 </div>
@@ -2735,7 +2792,8 @@
             <div class="service-card">
                 <div class="service-icon">⚡</div>
                 <h3>Distributed Systems</h3>
-                <p>Task queues, real-time WebSocket APIs, Kubernetes deployments, and CI/CD pipelines — infrastructure that scales with your business.</p>
+                <p>Task queues, real-time WebSocket APIs, Kubernetes deployments, and CI/CD pipelines — infrastructure
+                    that scales with your business.</p>
                 <div class="service-tags">
                     <span>K8s</span><span>Redis</span><span>RabbitMQ</span><span>AWS</span>
                 </div>
@@ -2774,13 +2832,19 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">EcoStream AI</h3>
-                    <p class="project-desc">Cities waste billions on inefficient garbage collection because they can’t predict where waste accumulates. I built an AI platform that uses real-time computer vision and a retrieval-augmented forecasting engine to predict next-day waste volumes across 4 Indian cities with 89% accuracy. Custom-trained YOLOv11 (mAP50-95: 0.6503) + LangChain RAG pipeline validated at 0.92 faithfulness via RAGAS. IEEE paper under review.</p>
+                    <p class="project-desc">Cities waste billions on inefficient garbage collection because they can’t
+                        predict where waste accumulates. I built an AI platform that uses real-time computer vision and
+                        a retrieval-augmented forecasting engine to predict next-day waste volumes across 4 Indian
+                        cities with 89% accuracy. Custom-trained YOLOv11 (mAP50-95: 0.6503) + LangChain RAG pipeline
+                        validated at 0.92 faithfulness via RAGAS. IEEE paper under review.</p>
                     <div class="project-tags">
                         <span class="project-tag">PyTorch</span>
                         <span class="project-tag">YOLOv11</span>
                         <span class="project-tag">FastAPI</span>
                         <span class="project-tag">RAG</span>
-                        <span class="project-tag" style="background:rgba(123,45,66,0.15); color:var(--rich-burgundy);">IEEE — Under Review</span>
+                        <span class="project-tag"
+                            style="background:rgba(123,45,66,0.15); color:var(--rich-burgundy);">IEEE — Under
+                            Review</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/PrakashSh05/EcostreamAI" target="_blank"
@@ -2800,7 +2864,11 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">EchoQuery</h3>
-                    <p class="project-desc">High-load SaaS systems break when compute-heavy tasks block the API layer. I built a production-grade distributed task engine that completely decouples processing from the API, cutting response latency by 40%. Deployed on Kubernetes with auto-scaling workers, Redis distributed locking for zero write conflicts, and a Dead Letter Queue for zero data loss — sustaining 99.99% uptime under production load.</p>
+                    <p class="project-desc">High-load SaaS systems break when compute-heavy tasks block the API layer. I
+                        built a production-grade distributed task engine that completely decouples processing from the
+                        API, cutting response latency by 40%. Deployed on Kubernetes with auto-scaling workers, Redis
+                        distributed locking for zero write conflicts, and a Dead Letter Queue for zero data loss —
+                        sustaining 99.99% uptime under production load.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Redis</span>
@@ -2825,7 +2893,11 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Waggy</h3>
-                    <p class="project-desc">A fully live, high-concurrency e-commerce platform built to handle thousands of simultaneous users without breaking. Resolved critical server deadlocks by re-architecting to Gevent-backed WebSockets, achieving under 50ms real-time dashboard updates. Integrated Stripe payments, Google OAuth, and a Groq LLM customer support chatbot delivering responses in under 2 seconds — live in production.</p>
+                    <p class="project-desc">A fully live, high-concurrency e-commerce platform built to handle thousands
+                        of simultaneous users without breaking. Resolved critical server deadlocks by re-architecting to
+                        Gevent-backed WebSockets, achieving under 50ms real-time dashboard updates. Integrated Stripe
+                        payments, Google OAuth, and a Groq LLM customer support chatbot delivering responses in under 2
+                        seconds — live in production.</p>
                     <div class="project-tags">
                         <span class="project-tag">Next.js</span>
                         <span class="project-tag">Flask</span>
@@ -2842,7 +2914,9 @@
 
             <!-- Project 4 -->
             <div class="project-card">
-                <div class="featured-badge" style="background: linear-gradient(135deg, #FFD700, #C97B3A); color: #1C1C1E;">🏆 Top 10 / 7,000+</div>
+                <div class="featured-badge"
+                    style="background: linear-gradient(135deg, #FFD700, #C97B3A); color: #1C1C1E;">🏆 Top 10 / 7,000+
+                </div>
                 <div class="project-img-wrapper">
                     <div class="parallax-bg" style="background: linear-gradient(135deg, #1C1C1E, #C97B3A);">
                         <span>PulseGoals</span>
@@ -2850,7 +2924,10 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">PulseGoals</h3>
-                    <p class="project-desc">Top 10 Finalist out of 7,000+ registrants — AtomQuest Hackathon 2026. Built a full-stack enterprise goal-tracking platform with React 18, Vite, Prisma, and Express.js. Features AI-augmented quarterly goal intelligence, role-based access portals, and real-time achievement tracking — shipped from zero to live in hackathon timeframe.</p>
+                    <p class="project-desc">Top 10 Finalist out of 7,000+ registrants — AtomQuest Hackathon 2026. Built
+                        a full-stack enterprise goal-tracking platform with React 18, Vite, Prisma, and Express.js.
+                        Features AI-augmented quarterly goal intelligence, role-based access portals, and real-time
+                        achievement tracking — shipped from zero to live in hackathon timeframe.</p>
                     <div class="project-tags">
                         <span class="project-tag">React 18</span>
                         <span class="project-tag">Vite</span>
@@ -2874,7 +2951,11 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">StrucBot</h3>
-                    <p class="project-desc">Built to solve the problem of passive learning in online education. An intelligent gamified assessment engine featuring custom evaluations (node matchers, explanatory MCQs) with a dynamic reward system (Gincoins, XP, AI-powered grading) designed to dramatically increase learner engagement compared to static assessments. Full-stack architecture with Next.js, Node.js, and MongoDB.</p>
+                    <p class="project-desc">Built to solve the problem of passive learning in online education. An
+                        intelligent gamified assessment engine featuring custom evaluations (node matchers, explanatory
+                        MCQs) with a dynamic reward system (Gincoins, XP, AI-powered grading) designed to dramatically
+                        increase learner engagement compared to static assessments. Full-stack architecture with
+                        Next.js, Node.js, and MongoDB.</p>
                     <div class="project-tags">
                         <span class="project-tag">Next.js</span>
                         <span class="project-tag">Node.js</span>
@@ -2882,7 +2963,8 @@
                         <span class="project-tag">AI Evaluation</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://struc-bot.vercel.app/" target="_blank" class="link-primary magnetic">Live Demo</a>
+                        <a href="https://struc-bot.vercel.app/" target="_blank" class="link-primary magnetic">Live
+                            Demo</a>
                         <button class="link-outline magnetic open-modal">Details</button>
                     </div>
                 </div>
@@ -2897,7 +2979,10 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">VΞINR Security</h3>
-                    <p class="project-desc">Next-generation enterprise security dashboard built for security teams and SaaS companies needing real-time threat intelligence. Features complex data visualisation, seamless authentication flows, profile synchronisation, and live metric monitoring. Demonstrates skills in building production-quality analytics dashboards with responsive architecture.</p>
+                    <p class="project-desc">Next-generation enterprise security dashboard built for security teams and
+                        SaaS companies needing real-time threat intelligence. Features complex data visualisation,
+                        seamless authentication flows, profile synchronisation, and live metric monitoring. Demonstrates
+                        skills in building production-quality analytics dashboards with responsive architecture.</p>
                     <div class="project-tags">
                         <span class="project-tag">React</span>
                         <span class="project-tag">Supabase</span>
@@ -3004,8 +3089,9 @@
     <!-- Interactive Scope Estimator -->
     <section id="estimator" class="estimator-section reveal">
         <h2 class="section-heading">Calculate Project Scope</h2>
-        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">Select your product requirements for an instant turn-around estimate.</p>
-        
+        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">Select your product requirements for an
+            instant turn-around estimate.</p>
+
         <div class="estimator-card">
             <div class="estimator-options">
                 <div class="estimator-opt selected" data-type="ai" data-days="5-7" data-complexity="Medium-High">
@@ -3027,14 +3113,21 @@
 
             <div class="estimator-result">
                 <div style="text-align: left;">
-                    <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--burnt-amber); font-weight: bold;">Estimated Turnaround</span>
-                    <h3 id="est-time" style="margin: 5px 0 0; font-size: 22px; color: var(--rich-burgundy);">5 - 7 Business Days</h3>
+                    <span
+                        style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--burnt-amber); font-weight: bold;">Estimated
+                        Turnaround</span>
+                    <h3 id="est-time" style="margin: 5px 0 0; font-size: 22px; color: var(--rich-burgundy);">5 - 7
+                        Business Days</h3>
                 </div>
                 <div style="text-align: left;">
-                    <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--burnt-amber); font-weight: bold;">Architecture Complexity</span>
-                    <h3 id="est-complexity" style="margin: 5px 0 0; font-size: 22px; color: var(--rich-burgundy);">Production-Grade (Medium-High)</h3>
+                    <span
+                        style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--burnt-amber); font-weight: bold;">Architecture
+                        Complexity</span>
+                    <h3 id="est-complexity" style="margin: 5px 0 0; font-size: 22px; color: var(--rich-burgundy);">
+                        Production-Grade (Medium-High)</h3>
                 </div>
-                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank" class="btn btn-primary magnetic" style="font-size: 14px;">📅 Book 30-Min Scoping Call</a>
+                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank"
+                    class="btn btn-primary magnetic" style="font-size: 14px;">📅 Book 30-Min Scoping Call</a>
             </div>
         </div>
     </section>
@@ -3047,19 +3140,27 @@
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question">How do contract engagements work?</div>
-                <div class="faq-answer">We start with a free 30-minute discovery call to scope your technical requirements. After aligning on architecture and deliverables, I provide a fixed milestone proposal or weekly contract agreement.</div>
+                <div class="faq-answer">We start with a free 30-minute discovery call to scope your technical
+                    requirements. After aligning on architecture and deliverables, I provide a fixed milestone proposal
+                    or weekly contract agreement.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Do you sign NDAs and transfer 100% IP rights?</div>
-                <div class="faq-answer">Yes, absolutely. All code, database schemas, model weights, and architectural assets created during the project belong entirely to your company under standard IP assignment agreements.</div>
+                <div class="faq-answer">Yes, absolutely. All code, database schemas, model weights, and architectural
+                    assets created during the project belong entirely to your company under standard IP assignment
+                    agreements.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What is your handover and support process?</div>
-                <div class="faq-answer">I deliver fully documented code repositories, Docker containers, and CI/CD pipelines alongside 14 days of complimentary post-launch monitoring and bug fixes to ensure smooth deployment.</div>
+                <div class="faq-answer">I deliver fully documented code repositories, Docker containers, and CI/CD
+                    pipelines alongside 14 days of complimentary post-launch monitoring and bug fixes to ensure smooth
+                    deployment.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Can you integrate AI / LLMs into existing backends?</div>
-                <div class="faq-answer">Yes, I specialize in adding RAG pipelines, custom vector search (Chroma/Pinecone), and LLM agents (Groq/OpenAI/Anthropic) to existing Python, Node, or Go architectures without downtime.</div>
+                <div class="faq-answer">Yes, I specialize in adding RAG pipelines, custom vector search
+                    (Chroma/Pinecone), and LLM agents (Groq/OpenAI/Anthropic) to existing Python, Node, or Go
+                    architectures without downtime.</div>
             </div>
         </div>
     </section>
@@ -3072,8 +3173,11 @@
         <div class="contact-wrapper reveal">
             <div class="contact-info">
                 <h3>Let's build something amazing together.</h3>
-                <p>Open to freelance contracts and project-based collaborations — SaaS, AI integrations, and distributed systems. Typically available within 48 hours.</p>
-                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank" class="btn btn-primary magnetic" style="display:inline-block; margin-bottom: 30px; font-size:14px;">📞 Book a Free 30-Min Call</a>
+                <p>Open to freelance contracts and project-based collaborations — SaaS, AI integrations, and distributed
+                    systems. Typically available within 48 hours.</p>
+                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank"
+                    class="btn btn-primary magnetic"
+                    style="display:inline-block; margin-bottom: 30px; font-size:14px;">📞 Book a Free 30-Min Call</a>
 
                 <div class="contact-details">
                     <div class="contact-item">
@@ -3141,7 +3245,8 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Neerav Babel. Crafted with precision &mdash; all rights reserved.</p>
-        <p style="margin-top: 8px; opacity: 0.6; font-size: 12px;">Built with vanilla HTML, CSS & JS. No frameworks needed. 🚀</p>
+        <p style="margin-top: 8px; opacity: 0.6; font-size: 12px;">Built with vanilla HTML, CSS & JS. No frameworks
+            needed. 🚀</p>
     </footer>
 
     <!-- Project Details Modal -->
@@ -3158,7 +3263,8 @@
         <div class="terminal-window-popup">
             <div class="terminal-topbar">
                 <div class="terminal-dots">
-                    <span class="terminal-dot-btn" style="background:#ff5f56; cursor:pointer;" id="term-close-dot"></span>
+                    <span class="terminal-dot-btn" style="background:#ff5f56; cursor:pointer;"
+                        id="term-close-dot"></span>
                     <span class="terminal-dot-btn" style="background:#ffbd2e;"></span>
                     <span class="terminal-dot-btn" style="background:#27c93f;"></span>
                 </div>
@@ -3166,12 +3272,15 @@
                 <div style="font-size:11px; color:#58a6ff;">v2.4-prod</div>
             </div>
             <div class="terminal-screen" id="term-screen">
-                <div>Welcome to Neerav Babel's Developer Shell. Type <span style="color:#e3b341;">help</span> to list commands.</div>
+                <div>Welcome to Neerav Babel's Developer Shell. Type <span style="color:#e3b341;">help</span> to list
+                    commands.</div>
                 <br>
             </div>
-            <div style="padding: 10px 20px; background:#161b22; border-top: 1px solid #30363d; display:flex; align-items:center; gap:10px;">
+            <div
+                style="padding: 10px 20px; background:#161b22; border-top: 1px solid #30363d; display:flex; align-items:center; gap:10px;">
                 <span class="term-prompt">neerav@dev:~$</span>
-                <input type="text" id="term-input" class="term-input" placeholder="type a command... (e.g. skills, projects, contact, clear)" autofocus>
+                <input type="text" id="term-input" class="term-input"
+                    placeholder="type a command... (e.g. skills, projects, contact, clear)" autofocus>
             </div>
         </div>
     </div>
