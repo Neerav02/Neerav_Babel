@@ -8,7 +8,7 @@
 
     <!-- SEO & Open Graph Tags -->
     <meta name="description"
-        content="Portfolio of Neerav Babel, a Final-year CS student & Full-Stack Developer with a passion for building intelligent, scalable cloud-native applications and seamless user experiences.">
+        content="Neerav Babel — Full-Stack Developer & AI Engineer. I build AI-powered systems, backend APIs, and production-grade SaaS products for startups and enterprises.">
     <meta name="keywords"
         content="Neerav Babel, Software Engineer, Full-Stack Developer, AI Researcher, React, Python, AWS">
     <meta name="author" content="Neerav Babel">
@@ -1799,6 +1799,271 @@
             caret-color: #27C93F;
         }
 
+        /* Skills Tag Grid (replaces percentage bars) */
+        .skills-tag-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .skill-group {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--grad-burgundy-amber);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .skill-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(123, 45, 66, 0.12);
+        }
+
+        .skill-group:hover::before {
+            opacity: 1;
+        }
+
+        .skill-group-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .skill-group-icon {
+            font-size: 24px;
+        }
+
+        .skill-group-header h3 {
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+            color: var(--rich-burgundy);
+            margin: 0;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: var(--chip-bg);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--burnt-amber);
+            color: var(--rich-burgundy);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(123, 45, 66, 0.1);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--grad-burgundy-amber);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(123, 45, 66, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            font-family: 'Playfair Display', serif;
+            color: var(--rich-burgundy);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .service-tags span {
+            padding: 5px 12px;
+            background: rgba(201, 123, 58, 0.1);
+            color: var(--burnt-amber);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Domains Strip */
+        .domains-strip {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .domains-strip h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--rich-burgundy);
+            margin-bottom: 30px;
+        }
+
+        .domain-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .domain-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .domain-item:hover {
+            border-color: var(--burnt-amber);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(123, 45, 66, 0.1);
+        }
+
+        .domain-icon {
+            font-size: 20px;
+        }
+
+        /* Certifications Strip */
+        .certs-strip {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .certs-strip h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--rich-burgundy);
+            margin-bottom: 40px;
+        }
+
+        .cert-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-align: left;
+            transition: all 0.4s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(123, 45, 66, 0.1);
+            border-color: var(--burnt-amber);
+        }
+
+        .cert-badge {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .cert-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .cert-info strong {
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        .cert-info span {
+            font-size: 13px;
+            opacity: 0.7;
+            color: var(--burnt-amber);
+            font-weight: 500;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .about-wrapper {
@@ -1818,6 +2083,20 @@
             .terminal-window {
                 width: 95%;
                 height: 80vh;
+            }
+
+            .skills-tag-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid .service-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 0 auto;
             }
         }
 
@@ -1851,6 +2130,28 @@
             .skills-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
+            }
+
+            .skills-tag-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid .service-card:last-child {
+                max-width: 100%;
+            }
+
+            .cert-items {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
             }
 
             .projects-grid {
@@ -1936,8 +2237,7 @@
                 <button class="chat-close" id="chat-close">&times;</button>
             </div>
             <div class="chat-body" id="chat-body">
-                <div class="chat-msg msg-ai">Hi! I'm an AI trained on Neerav's resume. Ask me about his skills,
-                    projects, or experience!</div>
+                <div class="chat-msg msg-ai">Hi! I'm Neerav's portfolio assistant. Ask me about his projects, availability, tech stack, or how he can help your product.</div>
             </div>
             <div class="chat-input-area">
                 <input type="text" class="chat-input" id="chat-input" placeholder="Ask anything...">
@@ -1963,6 +2263,7 @@
                 <li><a href="#home" class="magnetic">Home</a></li>
                 <li><a href="#about" class="magnetic">About</a></li>
                 <li><a href="#skills" class="magnetic">Skills</a></li>
+                <li><a href="#services" class="magnetic">Services</a></li>
                 <li><a href="#projects" class="magnetic">Projects</a></li>
                 <li><a href="#experience" class="magnetic">Experience</a></li>
                 <li><a href="#contact" class="magnetic">Contact</a></li>
@@ -1990,10 +2291,10 @@
         <div class="hero-content" id="hero-content">
             <h1 class="hero-name">Neerav Babel</h1>
             <h2 class="hero-subtitle">I am a <span class="typewriter" id="typewriter"></span></h2>
-            <p class="hero-tagline">Final-year CS student & Full-Stack Developer with a passion for building
-                intelligent, scalable cloud-native applications and seamless user experiences.</p>
+            <p class="hero-tagline">I build AI-powered full-stack systems and backend APIs for SaaS, e-commerce, and logistics startups — helping founders ship production-ready products without hiring a full engineering team.</p>
             <div class="cta-group">
                 <a href="#projects" class="btn btn-primary magnetic">View My Work</a>
+                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank" class="btn btn-primary magnetic" style="background: linear-gradient(135deg, #C97B3A, #7B2D42);">📞 Book a Free Call</a>
                 <a href="Neerav_Babel_Resume.pdf" target="_blank" class="btn btn-outline magnetic">Download CV</a>
             </div>
             <div style="margin-top: 30px; font-size: 12px; color: var(--text-color); opacity: 0.5;">
@@ -2036,12 +2337,12 @@
                         <div class="stat-label">Clients</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-num" data-target="15">0</div>
+                        <div class="stat-num" data-target="6">0</div>
                         <div class="stat-label">Projects</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-num" data-target="1">0</div>
-                        <div class="stat-label">Years Exp.</div>
+                        <div class="stat-label">Year Exp.</div>
                     </div>
                 </div>
 
@@ -2061,52 +2362,143 @@
     <!-- Skills -->
     <section id="skills">
         <h2 class="section-heading reveal">Technical Expertise</h2>
-        <div class="skills-grid reveal">
-            <div class="skills-card">
-                <h3>Core Skills</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-info"><span>Python / Node.js / FastAPI</span><span class="skill-percent"
-                            data-percent="90">0%</span></div>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-width="90%"></div>
-                    </div>
+        <div class="skills-tag-grid reveal">
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <span class="skill-group-icon">💻</span>
+                    <h3>Languages</h3>
                 </div>
-                <div class="skill-bar-container">
-                    <div class="skill-info"><span>React.js / Next.js / UI</span><span class="skill-percent"
-                            data-percent="85">0%</span></div>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-width="85%"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-info"><span>AI/ML (PyTorch, YOLO, GenAI)</span><span class="skill-percent"
-                            data-percent="80">0%</span></div>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-width="80%"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-info"><span>Databases (SQL, MongoDB)</span><span class="skill-percent"
-                            data-percent="85">0%</span></div>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-width="85%"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-info"><span>DevOps (AWS, Docker, CI/CD)</span><span class="skill-percent"
-                            data-percent="75">0%</span></div>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-width="75%"></div>
-                    </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">HTML5/CSS3</span>
                 </div>
             </div>
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <span class="skill-group-icon">🎨</span>
+                    <h3>Frontend</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <span class="skill-group-icon">⚙️</span>
+                    <h3>Backend & APIs</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">WebSockets</span>
+                    <span class="skill-tag">RabbitMQ</span>
+                    <span class="skill-tag">Celery</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <span class="skill-group-icon">🧠</span>
+                    <h3>AI / ML</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">RAG Pipelines</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">YOLOv11</span>
+                    <span class="skill-tag">OpenAI API</span>
+                    <span class="skill-tag">Anthropic API</span>
+                    <span class="skill-tag">Groq</span>
+                    <span class="skill-tag">HuggingFace</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <span class="skill-group-icon">☁️</span>
+                    <h3>Cloud & DevOps</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">Render</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <span class="skill-group-icon">🗄️</span>
+                    <h3>Databases</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+        </div>
 
-            <!-- 3D Interactive Skill Sphere -->
-            <div class="sphere-wrapper">
-                <div id="skill-sphere"></div>
+        <!-- 3D Interactive Skill Sphere -->
+        <div class="sphere-wrapper reveal" style="margin-top: 60px;">
+            <div id="skill-sphere"></div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- What I Can Build For You -->
+    <section id="services">
+        <h2 class="section-heading reveal">What I Can Build For You</h2>
+        <div class="services-grid reveal">
+            <div class="service-card">
+                <div class="service-icon">🧠</div>
+                <h3>AI Integrations</h3>
+                <p>LangChain RAG pipelines, intelligent chatbots, computer vision APIs, and custom ML models — turning your data into automated decision-making.</p>
+                <div class="service-tags">
+                    <span>LangChain</span><span>RAG</span><span>YOLOv11</span><span>OpenAI</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Full-Stack SaaS Products</h3>
+                <p>React/Next.js frontends, FastAPI/Node backends, auth, payments, dashboards — end-to-end products shipped production-ready.</p>
+                <div class="service-tags">
+                    <span>React</span><span>FastAPI</span><span>Stripe</span><span>OAuth</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Distributed Systems</h3>
+                <p>Task queues, real-time WebSocket APIs, Kubernetes deployments, and CI/CD pipelines — infrastructure that scales with your business.</p>
+                <div class="service-tags">
+                    <span>K8s</span><span>Redis</span><span>RabbitMQ</span><span>AWS</span>
+                </div>
             </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Clients & Domains Served -->
+    <div class="domains-strip reveal">
+        <h3>Clients & Domains Served</h3>
+        <div class="domain-items">
+            <div class="domain-item"><span class="domain-icon">💼</span><span>SaaS</span></div>
+            <div class="domain-item"><span class="domain-icon">🛒</span><span>E-Commerce</span></div>
+            <div class="domain-item"><span class="domain-icon">🚚</span><span>Logistics</span></div>
+            <div class="domain-item"><span class="domain-icon">📚</span><span>EdTech</span></div>
+            <div class="domain-item"><span class="domain-icon">🔒</span><span>Cybersecurity</span></div>
+            <div class="domain-item"><span class="domain-icon">🔬</span><span>Research / IEEE</span></div>
+        </div>
+    </div>
 
     <div class="section-divider"></div>
 
@@ -2118,21 +2510,19 @@
         <div class="projects-grid reveal">
             <!-- Project 1 -->
             <div class="project-card">
-                <div class="featured-badge">Featured</div>
+                <div class="featured-badge">IEEE Research</div>
                 <div class="project-img-wrapper">
                     <div class="parallax-bg"><span>EcoStream AI</span></div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">EcoStream AI</h3>
-                    <p class="project-desc">AI-Powered Waste Management Platform. Trained a custom YOLOv11 model
-                        (mAP50-95 = 0.6503) for real-time waste detection. Engineered a production-grade RAG pipeline
-                        using LangChain, ChromaDB, and Groq/Llama-3.1 to provide predictive analytics and next-day
-                        forecasting across 4 major Indian cities. Validated via RAGAS with 0.92 faithfulness.</p>
+                    <p class="project-desc">Cities waste billions on inefficient garbage collection because they can’t predict where waste accumulates. I built an AI platform that uses real-time computer vision and a retrieval-augmented forecasting engine to predict next-day waste volumes across 4 Indian cities with 89% accuracy. Custom-trained YOLOv11 (mAP50-95: 0.6503) + LangChain RAG pipeline validated at 0.92 faithfulness via RAGAS. IEEE paper under review.</p>
                     <div class="project-tags">
                         <span class="project-tag">PyTorch</span>
                         <span class="project-tag">YOLOv11</span>
                         <span class="project-tag">FastAPI</span>
                         <span class="project-tag">RAG</span>
+                        <span class="project-tag" style="background:rgba(123,45,66,0.15); color:var(--rich-burgundy);">IEEE — Under Review</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/PrakashSh05/EcostreamAI" target="_blank"
@@ -2144,6 +2534,7 @@
 
             <!-- Project 2 -->
             <div class="project-card">
+                <div class="featured-badge">Production-Grade</div>
                 <div class="project-img-wrapper">
                     <div class="parallax-bg" style="background: linear-gradient(135deg, #7B2D42, #1C1C1E);">
                         <span>EchoQuery</span>
@@ -2151,10 +2542,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">EchoQuery</h3>
-                    <p class="project-desc">Fault-tolerant Distributed Task Engine that completely decouples compute
-                        from the API layer, reducing latency by 40%. Implemented Redis distributed locking to prevent
-                        concurrent write conflicts and a Dead Letter Queue with exponential backoff. Deployed on
-                        Kubernetes with auto-scaling worker pools for 99.99% uptime.</p>
+                    <p class="project-desc">High-load SaaS systems break when compute-heavy tasks block the API layer. I built a production-grade distributed task engine that completely decouples processing from the API, cutting response latency by 40%. Deployed on Kubernetes with auto-scaling workers, Redis distributed locking for zero write conflicts, and a Dead Letter Queue for zero data loss — sustaining 99.99% uptime under production load.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Redis</span>
@@ -2171,6 +2559,7 @@
 
             <!-- Project 3 -->
             <div class="project-card">
+                <div class="featured-badge" style="background: #27C93F;">Live in Production</div>
                 <div class="project-img-wrapper">
                     <div class="parallax-bg" style="background: linear-gradient(135deg, #C97B3A, #7B2D42);">
                         <span>Waggy</span>
@@ -2178,10 +2567,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Waggy</h3>
-                    <p class="project-desc">High-Concurrency E-Commerce Platform for pet supplies. Engineered
-                        Gevent-backed WebSockets achieving &lt;50ms real-time updates for thousands of concurrent
-                        sessions. Integrated Stripe for payments, Google OAuth 2.0, and an LLM-powered customer support
-                        chatbot providing 24/7 automated assistance with &lt;2s response delivery.</p>
+                    <p class="project-desc">A fully live, high-concurrency e-commerce platform built to handle thousands of simultaneous users without breaking. Resolved critical server deadlocks by re-architecting to Gevent-backed WebSockets, achieving under 50ms real-time dashboard updates. Integrated Stripe payments, Google OAuth, and a Groq LLM customer support chatbot delivering responses in under 2 seconds — live in production.</p>
                     <div class="project-tags">
                         <span class="project-tag">Next.js</span>
                         <span class="project-tag">Flask</span>
@@ -2198,7 +2584,7 @@
 
             <!-- Project 4 -->
             <div class="project-card">
-                <div class="featured-badge" style="background: #1C1C1E;">Winner</div>
+                <div class="featured-badge" style="background: linear-gradient(135deg, #FFD700, #C97B3A); color: #1C1C1E;">🏆 Top 10 / 7,000+</div>
                 <div class="project-img-wrapper">
                     <div class="parallax-bg" style="background: linear-gradient(135deg, #1C1C1E, #C97B3A);">
                         <span>PulseGoals</span>
@@ -2206,10 +2592,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">PulseGoals</h3>
-                    <p class="project-desc">Enterprise Goal Setting & Tracking Portal developed for the AtomQuest
-                        Hackathon 1.0. Architected a full-stack monorepo with React 18, Vite, and TailwindCSS v4
-                        frontend, powered by an Express.js & Prisma backend. Features role-based portals, AI-augmented
-                        quarterly goal intelligence, and real-time achievement tracking.</p>
+                    <p class="project-desc">Top 10 Finalist out of 7,000+ registrants — AtomQuest Hackathon 2026. Built a full-stack enterprise goal-tracking platform with React 18, Vite, Prisma, and Express.js. Features AI-augmented quarterly goal intelligence, role-based access portals, and real-time achievement tracking — shipped from zero to live in hackathon timeframe.</p>
                     <div class="project-tags">
                         <span class="project-tag">React 18</span>
                         <span class="project-tag">Vite</span>
@@ -2228,15 +2611,12 @@
             <div class="project-card">
                 <div class="project-img-wrapper">
                     <div class="parallax-bg" style="background: linear-gradient(135deg, #D4A0A7, #7B2D42);">
-                        <span>Strcubot</span>
+                        <span>StrucBot</span>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Strcubot</h3>
-                    <p class="project-desc">Intelligent Gamified Assessment Engine & Chatbot. Designed a highly
-                        interactive learning platform featuring custom asset evaluations like node matchers and
-                        explanatory MCQs. Implemented a complex reward system (Gincoins/XP) dynamically awarded based on
-                        real-time performance tracking and automated AI grading algorithms.</p>
+                    <h3 class="project-title">StrucBot</h3>
+                    <p class="project-desc">Built to solve the problem of passive learning in online education. An intelligent gamified assessment engine featuring custom evaluations (node matchers, explanatory MCQs) with a dynamic reward system (Gincoins, XP, AI-powered grading) designed to dramatically increase learner engagement compared to static assessments. Full-stack architecture with Next.js, Node.js, and MongoDB.</p>
                     <div class="project-tags">
                         <span class="project-tag">Next.js</span>
                         <span class="project-tag">Node.js</span>
@@ -2244,8 +2624,7 @@
                         <span class="project-tag">AI Evaluation</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://struc-bot.vercel.app/" target="_blank" class="link-primary magnetic">Live
-                            Demo</a>
+                        <a href="https://struc-bot.vercel.app/" target="_blank" class="link-primary magnetic">Live Demo</a>
                         <button class="link-outline magnetic open-modal">Details</button>
                     </div>
                 </div>
@@ -2260,10 +2639,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">VΞINR Security</h3>
-                    <p class="project-desc">Next-Generation Enterprise Security Dashboard. Developed a high-performance,
-                        dark-mode-first web application focusing on threat intelligence visualization. Implemented
-                        seamless user authentication, profile data synchronization, and a highly responsive sidebar
-                        architecture for monitoring live security metrics and XP statistics.</p>
+                    <p class="project-desc">Next-generation enterprise security dashboard built for security teams and SaaS companies needing real-time threat intelligence. Features complex data visualisation, seamless authentication flows, profile synchronisation, and live metric monitoring. Demonstrates skills in building production-quality analytics dashboards with responsive architecture.</p>
                     <div class="project-tags">
                         <span class="project-tag">React</span>
                         <span class="project-tag">Supabase</span>
@@ -2330,14 +2706,49 @@
         </div>
     </section>
 
+    <!-- Certifications -->
+    <div class="certs-strip reveal">
+        <h3>Certifications & Credentials</h3>
+        <div class="cert-items">
+            <div class="cert-item">
+                <div class="cert-badge">🏅</div>
+                <div class="cert-info">
+                    <strong>LangChain for LLM Application Development</strong>
+                    <span>DeepLearning.AI — 100% Distinction</span>
+                </div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">🤗</div>
+                <div class="cert-info">
+                    <strong>Fundamentals of LLMs</strong>
+                    <span>HuggingFace — Jun 2026</span>
+                </div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">📘</div>
+                <div class="cert-info">
+                    <strong>Meta Full-Stack Developer</strong>
+                    <span>Coursera — 2025</span>
+                </div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-badge">💻</div>
+                <div class="cert-info">
+                    <strong>Full Stack Web Development</strong>
+                    <span>freeCodeCamp — 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contact -->
     <section id="contact" class="contact-section">
         <h2 class="section-heading reveal" style="color: #FAF7F2;">Get In Touch</h2>
         <div class="contact-wrapper reveal">
             <div class="contact-info">
                 <h3>Let's build something amazing together.</h3>
-                <p>Currently seeking an entry-level Software Developer (SDE) role. Feel free to reach out for
-                    opportunities, collaborations, or just a tech chat.</p>
+                <p>Open to freelance contracts and project-based collaborations — SaaS, AI integrations, and distributed systems. Typically available within 48 hours.</p>
+                <a href="https://calendly.com/babelneerav299/30min-phone-call" target="_blank" class="btn btn-primary magnetic" style="display:inline-block; margin-bottom: 30px; font-size:14px;">📞 Book a Free 30-Min Call</a>
 
                 <div class="contact-details">
                     <div class="contact-item">
@@ -2401,6 +2812,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Neerav Babel. Crafted with precision &mdash; all rights reserved.</p>
+        <p style="margin-top: 8px; opacity: 0.6; font-size: 12px;">Built with vanilla HTML, CSS & JS. No frameworks needed. 🚀</p>
+    </footer>
 
     <!-- Project Details Modal -->
     <div id="project-modal" class="modal">
@@ -2679,34 +3096,65 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    if (entry.target.classList.contains('skills-grid')) {
-                        document.querySelectorAll('.skill-bar-fill').forEach(b => b.style.width = b.getAttribute('data-width'));
-                        document.querySelectorAll('.skill-percent').forEach(l => {
-                            const t = parseInt(l.getAttribute('data-percent'));
-                            let c = 0;
-                            const up = () => {
-                                c += Math.max(1, Math.ceil(t / 40));
-                                if (c < t) { l.innerText = c + "%"; setTimeout(up, 30); }
-                                else l.innerText = t + "%";
-                            }; up();
-                        });
-                    }
-                    if (entry.target.classList.contains('about-wrapper')) {
-                        document.querySelectorAll('.stat-num').forEach(l => {
-                            const t = +l.getAttribute('data-target');
-                            let c = +l.innerText;
-                            const up = () => {
-                                c += Math.max(1, Math.ceil(t / 40));
-                                if (c < t) { l.innerText = c; setTimeout(up, 40); }
-                                else l.innerText = t + "+";
-                            }; up();
-                        });
-                    }
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        }, { threshold: 0.05, rootMargin: "0px 0px -30px 0px" });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Dedicated observer for stat counters (About section)
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-num').forEach(l => {
+                        const t = +l.getAttribute('data-target');
+                        let c = 0;
+                        const duration = 1500;
+                        const steps = 60;
+                        const increment = t / steps;
+                        let step = 0;
+                        const up = () => {
+                            step++;
+                            c = Math.min(Math.round(increment * step), t);
+                            l.innerText = c + (step >= steps ? '+' : '');
+                            if (step < steps) requestAnimationFrame(up);
+                        };
+                        requestAnimationFrame(up);
+                    });
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) statObserver.observe(statsContainer);
+
+        // Dedicated observer for skill bars
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-bar-fill').forEach(b => {
+                        setTimeout(() => { b.style.width = b.getAttribute('data-width'); }, 200);
+                    });
+                    entry.target.querySelectorAll('.skill-percent').forEach(l => {
+                        const t = parseInt(l.getAttribute('data-percent'));
+                        let c = 0;
+                        const steps = 50;
+                        const increment = t / steps;
+                        let step = 0;
+                        const up = () => {
+                            step++;
+                            c = Math.min(Math.round(increment * step), t);
+                            l.innerText = c + '%';
+                            if (step < steps) setTimeout(up, 25);
+                        };
+                        setTimeout(up, 300);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        const skillsCard = document.querySelector('.skills-card');
+        if (skillsCard) skillObserver.observe(skillsCard);
 
         // 8. Glassmorphism Project Modal
         const modal = document.getElementById('project-modal');
@@ -2785,28 +3233,36 @@
         chatClose.addEventListener('click', () => chatPanel.classList.remove('active'));
 
         const aiKnowledge = [
-            { keys: ['skill', 'tech', 'stack', 'language', 'tool', 'framework'], response: "Neerav's core stack includes Python, JavaScript, TypeScript, React, Next.js, and FastAPI. He's also highly proficient in AI/ML tools like PyTorch, YOLOv11, LangChain, and ChromaDB." },
-            { keys: ['experience', 'work', 'job', 'freelance'], response: "Neerav has 1 year of freelance experience building SaaS, e-commerce, and logistics platforms. He designed cloud-native REST APIs for over 10 clients and deployed distributed systems on AWS." },
-            { keys: ['project', 'portfolio', 'built', 'made'], response: "His top projects include EcoStream AI (Waste Management), PulseGoals (Enterprise Goal Tracking), Strcubot (Gamified AI Assessment), EchoQuery (K8s Task Engine), Waggy (E-commerce), and VEINR (Security Dashboard)." },
-            { keys: ['eco', 'ecostream', 'waste'], response: "EcoStream AI is an AI waste management platform where he trained a YOLOv11 model (mAP 0.65) and built a production RAG pipeline across 4 Indian cities." },
-            { keys: ['echo', 'echoquery'], response: "EchoQuery is a fault-tolerant async task engine he built using Python, Redis, RabbitMQ, and Kubernetes, achieving 99.99% uptime." },
-            { keys: ['waggy', 'commerce'], response: "Waggy is a high-concurrency e-commerce platform using Next.js and Flask. He integrated Stripe, WebSockets, and a Groq-powered LLM chatbot." },
-            { keys: ['pulse', 'goals', 'atomquest'], response: "PulseGoals is an enterprise Goal Setting & Tracking Portal built for AtomQuest Hackathon using React 18, Vite, Prisma, and TailwindCSS." },
-            { keys: ['struc', 'strcubot', 'bot', 'gincoin'], response: "Strcubot is an interactive gamified assessment engine and chatbot, featuring node matchers, MCQs, and real-time AI grading using Gincoins/XP as rewards." },
-            { keys: ['veinr', 'security'], response: "VΞINR is a next-generation enterprise security dashboard focusing on threat intelligence visualization and live security metrics." },
-            { keys: ['education', 'college', 'university', 'degree'], response: "He is a final-year B.Tech CS student at Jain University (graduating May 2027) with a stellar CGPA of 9.21/10." },
-            { keys: ['contact', 'email', 'hire', 'phone', 'reach'], response: "You can reach Neerav at babelneerav299@gmail.com or call +91 9660920036." },
-            { keys: ['hi', 'hello', 'hey', 'greetings'], response: "Hello! I am Neerav's AI assistant. What would you like to know about his professional background?" }
+            { keys: ['rate', 'cost', 'price', 'charge', 'budget', 'pricing', 'day rate', 'hourly'], response: "Neerav's rates depend on project scope, complexity, and timeline. For a custom quote, book a free 30-minute call at calendly.com/babelneerav299/30min-phone-call — he'll scope it with you directly." },
+            { keys: ['available', 'availability', 'start', 'timeline', 'when', 'free', 'capacity'], response: "Neerav is typically available within 48 hours for new projects. He can start scoping immediately — book a call at calendly.com/babelneerav299/30min-phone-call to discuss your timeline." },
+            { keys: ['next', 'next.js', 'nextjs'], response: "Yes! Neerav has production experience with Next.js. His e-commerce platform Waggy (live at waggy-pet-shop-ubkp.onrender.com) and the StrucBot assessment engine both use Next.js in production." },
+            { keys: ['skill', 'tech', 'stack', 'language', 'tool', 'framework'], response: "Neerav's core stack: Python, JavaScript/TypeScript, React, Next.js, FastAPI, Node.js. AI/ML: PyTorch, YOLOv11, LangChain, RAG Pipelines, OpenAI & Anthropic APIs. DevOps: AWS, Docker, Kubernetes, CI/CD." },
+            { keys: ['experience', 'work', 'job', 'freelance', 'client'], response: "Neerav has 1 year of freelance experience delivering production systems for 10+ clients across SaaS, e-commerce, and logistics. He ships cloud-native REST APIs, AI integrations, and distributed systems." },
+            { keys: ['project', 'portfolio', 'built', 'made'], response: "Key projects: EcoStream AI (IEEE research, computer vision + RAG), EchoQuery (distributed task engine on K8s), Waggy (live e-commerce platform), PulseGoals (hackathon winner), StrucBot (gamified learning), VEINR (security dashboard)." },
+            { keys: ['eco', 'ecostream', 'waste'], response: "EcoStream AI: AI waste management platform with custom YOLOv11 (mAP50-95: 0.6503), LangChain RAG pipeline (0.92 faithfulness), predicting waste across 4 Indian cities. IEEE paper under review." },
+            { keys: ['echo', 'echoquery', 'distributed'], response: "EchoQuery: Production-grade distributed task engine — decouples compute from API layer, cutting latency 40%. Kubernetes deployment, Redis distributed locking, Dead Letter Queue, 99.99% uptime." },
+            { keys: ['waggy', 'commerce', 'shop'], response: "Waggy: Live high-concurrency e-commerce platform with Stripe payments, Google OAuth, Gevent WebSockets (<50ms updates), and a Groq LLM chatbot delivering <2s responses. Live in production." },
+            { keys: ['pulse', 'goals', 'atomquest', 'hackathon'], response: "PulseGoals: Top 10 Finalist out of 7,000+ registrants at AtomQuest Hackathon 2026. Full-stack enterprise goal-tracking with React 18, Prisma, AI-augmented intelligence." },
+            { keys: ['struc', 'strcubot', 'bot', 'gincoin', 'learn'], response: "StrucBot: Gamified AI assessment engine solving passive learning. Features Gincoins/XP rewards, dynamic AI grading, and interactive assessments — designed to boost engagement vs static tests." },
+            { keys: ['veinr', 'security', 'threat'], response: "VEINR: Real-time threat intelligence dashboard for security teams and SaaS companies. Complex data visualization, auth flows, and live metric monitoring using React + Supabase." },
+            { keys: ['education', 'college', 'university', 'degree'], response: "Final-year B.Tech CS at Jain University (graduating May 2027), CGPA 9.21/10, Top 5% of CSE. IEEE-published researcher." },
+            { keys: ['certif', 'langchain', 'hugging', 'meta', 'course'], response: "Certifications: LangChain for LLM Apps (DeepLearning.AI, 100% distinction), Fundamentals of LLMs (HuggingFace), Meta Full-Stack Developer (Coursera), Full Stack Web Dev (freeCodeCamp)." },
+            { keys: ['contact', 'email', 'hire', 'phone', 'reach', 'book', 'call'], response: "Email: babelneerav299@gmail.com | Phone: +91 9660920036 | Book a free 30-min call: calendly.com/babelneerav299/30min-phone-call" },
+            { keys: ['hi', 'hello', 'hey', 'greetings'], response: "Hello! I'm Neerav's portfolio assistant. I can help with info about his projects, availability, tech stack, or how he can help your product. What would you like to know?" },
+            { keys: ['saas', 'api', 'backend'], response: "Neerav specializes in building full-stack SaaS products with React/Next.js frontends, FastAPI/Node backends, auth, payments (Stripe), and cloud deployment on AWS with Docker & Kubernetes." },
+            { keys: ['ai', 'ml', 'machine', 'chatbot', 'rag', 'llm'], response: "Neerav builds AI integrations including LangChain RAG pipelines, chatbots (Groq, OpenAI, Anthropic), computer vision (YOLOv11), and custom ML models with PyTorch. IEEE-published researcher in AI." }
         ];
 
         function getAIResponse(input) {
             const lowerInput = input.toLowerCase();
+            let bestMatch = null;
+            let bestScore = 0;
             for (let item of aiKnowledge) {
-                if (item.keys.some(key => lowerInput.includes(key))) {
-                    return item.response;
-                }
+                const score = item.keys.filter(key => lowerInput.includes(key)).length;
+                if (score > bestScore) { bestScore = score; bestMatch = item; }
             }
-            return "I'm still learning about Neerav! You can ask about his 'skills', 'experience', 'projects', 'education', or how to 'contact' him.";
+            if (bestMatch) return bestMatch.response;
+            return "Great question! I can help with Neerav's projects, tech stack, availability, rates, certifications, or how to book a call. What interests you?";
         }
 
         function addMessage(text, sender) {
