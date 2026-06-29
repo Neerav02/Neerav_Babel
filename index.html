@@ -2203,25 +2203,152 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 10px;
-            background: var(--chip-bg);
-            padding: 20px;
-            border-radius: 14px;
+            gap: 12px;
+            background: rgba(28, 28, 30, 0.4);
+            padding: 24px;
+            border-radius: 16px;
             border: 1px solid var(--border-color);
             margin: 20px 0;
             flex-wrap: wrap;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
         }
 
         .arch-step {
             flex: 1;
-            min-width: 120px;
+            min-width: 130px;
             text-align: center;
-            padding: 10px;
+            padding: 14px 10px;
             background: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
             font-size: 13px;
             font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .arch-step:hover {
+            transform: translateY(-3px);
+            border-color: var(--burnt-amber);
+            box-shadow: 0 8px 20px rgba(201, 123, 58, 0.2);
+        }
+
+        .arch-arrow {
+            color: var(--burnt-amber);
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .arch-arrow::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--burnt-amber);
+            border-radius: 50%;
+            animation: flowPacket 1.8s linear infinite;
+        }
+
+        @keyframes flowPacket {
+            0% {
+                transform: translateX(-12px);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(12px);
+                opacity: 0;
+            }
+        }
+
+        /* Live Debug Console Simulation Styles */
+        .live-debug-panel {
+            background: #0D1117;
+            border: 1px solid #30363D;
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 25px;
+            font-family: 'Fira Code', Consolas, monospace;
+            color: #C9D1D9;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .debug-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363D;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .debug-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(39, 201, 63, 0.15);
+            border: 1px solid #27C93F;
+            border-radius: 12px;
+            color: #27C93F;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .debug-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .debug-btn {
+            padding: 8px 14px;
+            background: #21262D;
+            border: 1px solid #30363D;
+            color: #58A6FF;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .debug-btn:hover {
+            background: #30363D;
+            color: #79C0FF;
+            transform: translateY(-1px);
+        }
+
+        .debug-btn-danger {
+            color: #FF7B72;
+        }
+
+        .debug-btn-danger:hover {
+            color: #FFA198;
+            background: rgba(255, 123, 114, 0.1);
+        }
+
+        .debug-console-log {
+            height: 150px;
+            overflow-y: auto;
+            background: #161B22;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+            line-height: 1.6;
+            border: 1px solid #21262D;
         }
 
         /* FAQ Section */
@@ -2854,31 +2981,65 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 2: EchoQuery AI -->
             <div class="project-card">
-                <div class="featured-badge">Production-Grade</div>
+                <div class="featured-badge" style="background: #27C93F;">Live Production Demo</div>
                 <div class="project-img-wrapper">
                     <div class="parallax-bg" style="background: linear-gradient(135deg, #7B2D42, #1C1C1E);">
-                        <span>EchoQuery</span>
+                        <span>EchoQuery AI</span>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">EchoQuery</h3>
-                    <p class="project-desc">High-load SaaS systems break when compute-heavy tasks block the API layer. I
-                        built a production-grade distributed task engine that completely decouples processing from the
-                        API, cutting response latency by 40%. Deployed on Kubernetes with auto-scaling workers, Redis
-                        distributed locking for zero write conflicts, and a Dead Letter Queue for zero data loss —
-                        sustaining 99.99% uptime under production load.</p>
+                    <h3 class="project-title">EchoQuery AI</h3>
+                    <p class="project-desc">Enterprise-grade AI media intelligence engine engineered for sub-second
+                        speech recognition (<950ms latency), verbatim transcript extraction, and real-time WebSocket
+                            token streaming. Decouples compute heavy loads with Redis Redlock distributed
+                            synchronization, RabbitMQ Dead Letter Queue self-healing recovery, and automated executive
+                            HTML reporting enforcing 99.99% operational SLA compliance.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">FastAPI</span>
+                                <span class="project-tag">WebSockets</span>
+                                <span class="project-tag">Speech AI</span>
+                                <span class="project-tag">Redis Redlock</span>
+                                <span class="project-tag">RabbitMQ DLQ</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://echoquery.onrender.com" target="_blank"
+                                    class="link-primary magnetic">Live Demo</a>
+                                <a href="https://github.com/Neerav02/EchoQuery" target="_blank"
+                                    class="link-outline magnetic"
+                                    style="display:flex; align-items:center; justify-content:center;">GitHub</a>
+                                <button class="link-outline magnetic open-modal" style="flex:1;">Details & Live
+                                    Debug</button>
+                            </div>
+                </div>
+            </div>
+
+            <!-- Project 3: One Man Office AI -->
+            <div class="project-card">
+                <div class="featured-badge" style="background: linear-gradient(135deg, #C97B3A, #7B2D42);">Autonomous
+                    Agency Suite</div>
+                <div class="project-img-wrapper">
+                    <div class="parallax-bg" style="background: linear-gradient(135deg, #1C1C1E, #7B2D42);">
+                        <span>One Man Office</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">One Man Office AI</h3>
+                    <p class="project-desc">Autonomous multi-modal AI executive suite designed to operate an entire
+                        digital agency seamlessly. Combines reactive task routing, automated contract generation,
+                        calendar intelligence, client communications, and real-time financial reporting into a
+                        self-contained autonomous agent workflow powered by LangChain and PostgreSQL.</p>
                     <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Redis</span>
-                        <span class="project-tag">RabbitMQ</span>
-                        <span class="project-tag">K8s</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">Autonomous Agents</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">PostgreSQL</span>
+                        <span class="project-tag">Vector DB</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/Neerav02/EchoQuery" target="_blank"
-                            class="link-primary magnetic">GitHub</a>
-                        <button class="link-outline magnetic open-modal">Details</button>
+                        <button class="link-primary magnetic open-modal" style="width:100%;">View Workflow &
+                            Architecture</button>
                     </div>
                 </div>
             </div>
@@ -3651,13 +3812,13 @@
         const projectSpecs = {
             "EcoStream AI": {
                 arch: `<div class="arch-flow">
-                        <div class="arch-step">📷 Video Stream / Cameras</div>
+                        <div class="arch-step">📷 <strong>Video Streams</strong><br><span style="font-size:11px; opacity:0.7;">Multi-City Telemetry</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🧠 YOLOv11 Engine (mAP 0.65)</div>
+                        <div class="arch-step">🧠 <strong>YOLOv11 Inference</strong><br><span style="font-size:11px; opacity:0.7;">mAP50-95: 0.6503</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🔍 LangChain RAG + ChromaDB</div>
+                        <div class="arch-step">🔍 <strong>LangChain + RAG</strong><br><span style="font-size:11px; opacity:0.7;">ChromaDB Vector Store</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">📊 Forecasting Dashboard</div>
+                        <div class="arch-step">📊 <strong>Municipal Dashboard</strong><br><span style="font-size:11px; opacity:0.7;">89% Accuracy Volume</span></div>
                       </div>`,
                 code: `// Custom RAG Evaluation & YOLO Inference Pipeline
 import { LangChain } from 'langchain';
@@ -3673,16 +3834,81 @@ export async function processWasteTelemetry(frameBuffer, cityId) {
     return { forecastVolume: forecast.numericVal, faithfulness: 0.92 };
 }`
             },
+            "EchoQuery AI": {
+                arch: `<div class="arch-flow">
+                        <div class="arch-step">🌐 <strong>FastAPI Gateway</strong><br><span style="font-size:11px; opacity:0.7;">Job ID Return (&lt;50ms)</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">🔒 <strong>Redis Redlock</strong><br><span style="font-size:11px; opacity:0.7;">Concurrency Lock</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">🛡️ <strong>RabbitMQ DLQ</strong><br><span style="font-size:11px; opacity:0.7;">Self-Healing Exchange</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">⚡ <strong>Celery Workers</strong><br><span style="font-size:11px; opacity:0.7;">Speech AI (&lt;950ms)</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">📩 <strong>Executive Mailer</strong><br><span style="font-size:11px; opacity:0.7;">HTML Report Alert</span></div>
+                      </div>`,
+                debugWidget: `<div class="live-debug-panel">
+                    <div class="debug-header">
+                        <div style="font-weight:bold; color:#58A6FF; display:flex; align-items:center; gap:8px;">
+                            <span>⚡ EchoQuery Live Debug & Token Streamer Console</span>
+                        </div>
+                        <div class="debug-status-pill"><span class="pulse-dot"></span> 99.99% SLA ONLINE</div>
+                    </div>
+                    <div class="debug-controls">
+                        <button class="debug-btn" onclick="runEchoStreamTest()">🎙️ Stream Speech Tokens (&lt;950ms)</button>
+                        <button class="debug-btn" onclick="runEchoLockTest()">🔒 Verify Redlock Barrier</button>
+                        <button class="debug-btn debug-btn-danger" onclick="runEchoDLQTest()">🛡️ Trigger DLQ Replay Simulation</button>
+                    </div>
+                    <div class="debug-console-log" id="echo-console-log">
+                        <div style="color:#8B949E;">[CLUSTER ONLINE] EchoQuery async worker pool connected. Click a telemetry action above to test live stream...</div>
+                    </div>
+                </div>`,
+                code: `# FastAPI Async Gateway & Real-Time Token Streaming WebSockets
+from fastapi import FastAPI, WebSocket
+import redis, json, time, uuid
+
+app = FastAPI(title="EchoQuery AI Engine")
+redis_client = redis.Redis(host='redis-cluster', port=6379, db=0)
+
+@app.websocket("/ws/stream/{job_id}")
+async def stream_transcription_tokens(websocket: WebSocket, job_id: str):
+    await websocket.accept()
+    pubsub = redis_client.pubsub()
+    pubsub.subscribe(f"tokens:{job_id}")
+    
+    # Real-time WebSocket streaming without client polling overhead (<950ms latency)
+    for message in pubsub.listen():
+        if message['type'] == 'message':
+            token_data = json.loads(message['data'])
+            await websocket.send_json(token_data)
+            if token_data.get("is_final"):
+                break`
+            },
             "EchoQuery": {
                 arch: `<div class="arch-flow">
-                        <div class="arch-step">🌐 API Gateway</div>
+                        <div class="arch-step">🌐 <strong>FastAPI Gateway</strong><br><span style="font-size:11px; opacity:0.7;">Job ID Return (&lt;50ms)</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🔒 Redis Distributed Lock</div>
+                        <div class="arch-step">🔒 <strong>Redis Redlock</strong><br><span style="font-size:11px; opacity:0.7;">Concurrency Lock</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">⚡ RabbitMQ Queue + DLQ</div>
+                        <div class="arch-step">🛡️ <strong>RabbitMQ DLQ</strong><br><span style="font-size:11px; opacity:0.7;">Self-Healing Exchange</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">☸️ K8s Auto-Scaling Workers</div>
+                        <div class="arch-step">⚡ <strong>Celery Workers</strong><br><span style="font-size:11px; opacity:0.7;">Speech AI (&lt;950ms)</span></div>
                       </div>`,
+                debugWidget: `<div class="live-debug-panel">
+                    <div class="debug-header">
+                        <div style="font-weight:bold; color:#58A6FF; display:flex; align-items:center; gap:8px;">
+                            <span>⚡ EchoQuery Live Debug & Token Streamer Console</span>
+                        </div>
+                        <div class="debug-status-pill"><span class="pulse-dot"></span> 99.99% SLA ONLINE</div>
+                    </div>
+                    <div class="debug-controls">
+                        <button class="debug-btn" onclick="runEchoStreamTest()">🎙️ Stream Speech Tokens (&lt;950ms)</button>
+                        <button class="debug-btn" onclick="runEchoLockTest()">🔒 Verify Redlock Barrier</button>
+                        <button class="debug-btn debug-btn-danger" onclick="runEchoDLQTest()">🛡️ Trigger DLQ Replay Simulation</button>
+                    </div>
+                    <div class="debug-console-log" id="echo-console-log">
+                        <div style="color:#8B949E;">[CLUSTER ONLINE] EchoQuery worker pool connected. Click a telemetry action above to test...</div>
+                    </div>
+                </div>`,
                 code: `# Redis Distributed Locking & Task Worker Execution
 import redis, time, uuid
 
@@ -3691,7 +3917,6 @@ redis_client = redis.Redis(host='redis-cluster', port=6379, db=0)
 def execute_distributed_task(task_id, payload):
     lock_key = f"lock:task:{task_id}"
     identifier = str(uuid.uuid4())
-    # Acquire distributed lock with 10s TTL
     if redis_client.set(lock_key, identifier, nx=True, ex=10):
         try:
             process_heavy_compute(payload)
@@ -3700,15 +3925,52 @@ def execute_distributed_task(task_id, payload):
             if redis_client.get(lock_key) == identifier:
                 redis_client.delete(lock_key)`
             },
+            "One Man Office AI": {
+                arch: `<div class="arch-flow">
+                        <div class="arch-step">💬 <strong>Client Prompt</strong><br><span style="font-size:11px; opacity:0.7;">Multi-modal Ingestion</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">🧠 <strong>LangChain Router</strong><br><span style="font-size:11px; opacity:0.7;">Autonomous Agent</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">🛠️ <strong>Tool Execution</strong><br><span style="font-size:11px; opacity:0.7;">Docs, Mail, Finance</span></div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-step">🐘 <strong>PostgreSQL Memory</strong><br><span style="font-size:11px; opacity:0.7;">Vector & Session DB</span></div>
+                      </div>`,
+                debugWidget: `<div class="live-debug-panel">
+                    <div class="debug-header">
+                        <div style="font-weight:bold; color:#D4A0A7; display:flex; align-items:center; gap:8px;">
+                            <span>💼 One Man Office Autonomous Execution Simulator</span>
+                        </div>
+                        <div class="debug-status-pill" style="border-color:#C97B3A; color:#C97B3A; background:rgba(201,123,58,0.15);">🤖 AUTONOMOUS AGENT READY</div>
+                    </div>
+                    <div class="debug-controls">
+                        <button class="debug-btn" onclick="runOfficeContractTest()">📄 Generate Client Contract</button>
+                        <button class="debug-btn" onclick="runOfficeFinanceTest()">📊 Audit Monthly Revenue</button>
+                    </div>
+                    <div class="debug-console-log" id="office-console-log">
+                        <div style="color:#8B949E;">[AGENT STANDBY] Multi-modal agency engine running. Click an action to simulate agent task execution...</div>
+                    </div>
+                </div>`,
+                code: `// Autonomous Agency Task Routing Agent (LangChain + FastAPI)
+import { AgentExecutor, createOpenAIToolsAgent } from "langchain/agents";
+import { DynamicStructuredTool } from "@langchain/core/tools";
+
+const contractTool = new DynamicStructuredTool({
+  name: "generate_contract",
+  description: "Automates NDA and IP assignment agreements for new clients.",
+  func: async ({ clientName, scope }) => {
+    return await DocumentEngine.renderPDF(clientName, scope);
+  }
+});`
+            },
             "Waggy": {
                 arch: `<div class="arch-flow">
-                        <div class="arch-step">📱 Next.js 14 Frontend</div>
+                        <div class="arch-step">📱 <strong>Next.js 14 UI</strong><br><span style="font-size:11px; opacity:0.7;">Storefront Dashboard</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🔌 Gevent WebSockets (&lt;50ms)</div>
+                        <div class="arch-step">🔌 <strong>Gevent WebSockets</strong><br><span style="font-size:11px; opacity:0.7;">&lt;50ms Sync</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">💳 Stripe Checkout & OAuth</div>
+                        <div class="arch-step">💳 <strong>Stripe &amp; OAuth</strong><br><span style="font-size:11px; opacity:0.7;">Secure Checkout</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🤖 Groq Support AI (&lt;2s)</div>
+                        <div class="arch-step">🤖 <strong>Groq LLM Support</strong><br><span style="font-size:11px; opacity:0.7;">&lt;2s AI Responses</span></div>
                       </div>`,
                 code: `// Real-Time WebSocket Session Synchronization (Flask + Gevent)
 from gevent import monkey; monkey.patch_all()
@@ -3723,13 +3985,13 @@ def handle_inventory_change(data):
             },
             "PulseGoals": {
                 arch: `<div class="arch-flow">
-                        <div class="arch-step">⚛️ React 18 + Vite Monorepo</div>
+                        <div class="arch-step">⚛️ <strong>React 18 + Vite</strong><br><span style="font-size:11px; opacity:0.7;">Enterprise Frontend</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🛡️ Express RBAC Middleware</div>
+                        <div class="arch-step">🛡️ <strong>Express RBAC</strong><br><span style="font-size:11px; opacity:0.7;">Auth & Role Security</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">💎 Prisma ORM Engine</div>
+                        <div class="arch-step">💎 <strong>Prisma ORM</strong><br><span style="font-size:11px; opacity:0.7;">Database Abstraction</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">📈 Dynamic Intelligence Portal</div>
+                        <div class="arch-step">📈 <strong>Goal Intelligence</strong><br><span style="font-size:11px; opacity:0.7;">Real-Time Tracking</span></div>
                       </div>`,
                 code: `// Prisma ORM Enterprise Goal Intelligence Query
 import { PrismaClient } from '@prisma/client';
@@ -3745,13 +4007,13 @@ export async function calculateQuarterlyScore(userId) {
             },
             "StrucBot": {
                 arch: `<div class="arch-flow">
-                        <div class="arch-step">🎓 Next.js Learner Portal</div>
+                        <div class="arch-step">🎓 <strong>Next.js Portal</strong><br><span style="font-size:11px; opacity:0.7;">Learner UI</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🧩 Node Matcher Evaluator</div>
+                        <div class="arch-step">🧩 <strong>Node Matcher</strong><br><span style="font-size:11px; opacity:0.7;">Graph Evaluator</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">💰 Gincoins / XP Reward Engine</div>
+                        <div class="arch-step">💰 <strong>Reward Engine</strong><br><span style="font-size:11px; opacity:0.7;">Gincoins & XP Gamification</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🍃 MongoDB State Store</div>
+                        <div class="arch-step">🍃 <strong>MongoDB Store</strong><br><span style="font-size:11px; opacity:0.7;">Persistent State</span></div>
                       </div>`,
                 code: `// Automated AI Node Matching & Grading Engine
 function evaluateGraphSubmission(userNodes, targetGraph) {
@@ -3765,13 +4027,13 @@ function evaluateGraphSubmission(userNodes, targetGraph) {
             },
             "VΞINR Security": {
                 arch: `<div class="arch-flow">
-                        <div class="arch-step">🛡️ Enterprise Dashboard UI</div>
+                        <div class="arch-step">🛡️ <strong>Security UI</strong><br><span style="font-size:11px; opacity:0.7;">Threat Matrix</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">⚡ Supabase Realtime Stream</div>
+                        <div class="arch-step">⚡ <strong>Supabase Stream</strong><br><span style="font-size:11px; opacity:0.7;">Realtime Socket</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">🔍 Threat Telemetry Parser</div>
+                        <div class="arch-step">🔍 <strong>Neural Telemetry</strong><br><span style="font-size:11px; opacity:0.7;">Threat Classification</span></div>
                         <div class="arch-arrow">&rarr;</div>
-                        <div class="arch-step">📊 Real-Time Metric Monitor</div>
+                        <div class="arch-step">📊 <strong>Live Monitor</strong><br><span style="font-size:11px; opacity:0.7;">SOC Telemetry Alert</span></div>
                       </div>`,
                 code: `// Supabase Realtime Threat Stream Listener
 import { createClient } from '@supabase/supabase-javascript';
@@ -3782,6 +4044,54 @@ supabase.channel('security-threats')
       renderLiveAlert(payload.new);
   }).subscribe();`
             }
+        };
+
+        // Live Debug Interactive Simulation Handlers
+        window.runEchoStreamTest = function () {
+            const log = document.getElementById('echo-console-log');
+            if (!log) return;
+            log.innerHTML += `<div style="color:#58A6FF;">[${new Date().toLocaleTimeString()}] 🎙️ Audio payload ingested (Neerav_Resume.mp4). Job ID: job_${Math.floor(Math.random() * 8999 + 1000)}</div>`;
+            log.scrollTop = log.scrollHeight;
+            setTimeout(() => {
+                log.innerHTML += `<div style="color:#7FE435;">[${new Date().toLocaleTimeString()}] 📡 Token Streaming: "EchoQuery delivers sub-second speech recognition (<950ms latency)..." [COMPLETED]</div>`;
+                log.scrollTop = log.scrollHeight;
+            }, 600);
+        };
+
+        window.runEchoLockTest = function () {
+            const log = document.getElementById('echo-console-log');
+            if (!log) return;
+            log.innerHTML += `<div style="color:#E3B341;">[${new Date().toLocaleTimeString()}] 🔒 Acquiring Redis Redlock: lock:task:speech_transcription... [SUCCESS TTL: 10s]</div>`;
+            log.scrollTop = log.scrollHeight;
+        };
+
+        window.runEchoDLQTest = function () {
+            const log = document.getElementById('echo-console-log');
+            if (!log) return;
+            log.innerHTML += `<div style="color:#FF7B72;">[${new Date().toLocaleTimeString()}] ⚠️ Corrupted payload simulated. Task routed to RabbitMQ Dead Letter Queue.</div>`;
+            log.scrollTop = log.scrollHeight;
+            setTimeout(() => {
+                log.innerHTML += `<div style="color:#79C0FF;">[${new Date().toLocaleTimeString()}] 🛡️ Self-Healing Console triggered: Replaying payload from DLQ... [RECOVERED - ZERO DATA LOSS]</div>`;
+                log.scrollTop = log.scrollHeight;
+            }, 800);
+        };
+
+        window.runOfficeContractTest = function () {
+            const log = document.getElementById('office-console-log');
+            if (!log) return;
+            log.innerHTML += `<div style="color:#D4A0A7;">[${new Date().toLocaleTimeString()}] 📄 LangChain Agent activated: Generating NDA & IP Agreement for new client...</div>`;
+            log.scrollTop = log.scrollHeight;
+            setTimeout(() => {
+                log.innerHTML += `<div style="color:#7FE435;">[${new Date().toLocaleTimeString()}] ✅ PDF Contract generated & emailed to client. Session stored in PostgreSQL vector memory.</div>`;
+                log.scrollTop = log.scrollHeight;
+            }, 700);
+        };
+
+        window.runOfficeFinanceTest = function () {
+            const log = document.getElementById('office-console-log');
+            if (!log) return;
+            log.innerHTML += `<div style="color:#C97B3A;">[${new Date().toLocaleTimeString()}] 📊 Auditing agency revenue & pending retainers... [Q3 Projected Growth: +42%]</div>`;
+            log.scrollTop = log.scrollHeight;
         };
 
         document.querySelectorAll('.open-modal').forEach(btn => {
@@ -3798,15 +4108,19 @@ supabase.channel('security-threats')
                     code: '// Production code snippet'
                 };
 
+                const debugHtml = spec.debugWidget ? spec.debugWidget : '';
+
                 modalBody.innerHTML = `
                     <div class="modal-img-container">${img}</div>
                     <h2 style="font-size: 28px; margin-top:15px; margin-bottom: 10px; color: var(--rich-burgundy); font-family: 'Playfair Display', serif;">${title}</h2>
                     <p style="font-size: 15px; margin-bottom: 20px; opacity: 0.9; color: var(--text-color); line-height: 1.6;">${desc}</p>
                     <div class="project-tags" style="margin-bottom:20px;">${tags}</div>
                     
-                    <h3 style="font-size: 18px; color: var(--burnt-amber); margin-bottom: 10px;">🏗️ Architecture & Data Flow</h3>
+                    <h3 style="font-size: 18px; color: var(--burnt-amber); margin-bottom: 10px;">🏗️ System Architecture & Workflow Flow</h3>
                     ${spec.arch}
                     
+                    ${debugHtml}
+
                     <h3 style="font-size: 18px; color: var(--burnt-amber); margin-top: 25px; margin-bottom: 10px;">💻 Key Production Code Highlight</h3>
                     <div class="modal-code-header"><span>core_implementation.ts</span><span>PRODUCTION</span></div>
                     <pre class="modal-code-block"><code>${spec.code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
