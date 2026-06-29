@@ -106,7 +106,7 @@
             font-weight: 900;
         }
 
-        /* Custom Cursor */
+        /* Custom Vector Grapher Cursor */
         .cursor-dot {
             width: 8px;
             height: 8px;
@@ -118,20 +118,62 @@
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(123, 45, 66, 0.6);
         }
 
         .cursor-ring {
-            width: 28px;
-            height: 28px;
-            border: 2px solid var(--burnt-amber);
-            border-radius: 50%;
             position: fixed;
             top: 0;
             left: 0;
             pointer-events: none;
-            z-index: 99998;
+            border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.2s, height 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .cursor-ring.ring-1 {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--burnt-amber);
+            z-index: 99998;
+        }
+
+        .cursor-ring.ring-2 {
+            width: 16px;
+            height: 16px;
+            border: 1px dashed var(--rich-burgundy);
+            opacity: 0.75;
+            z-index: 99997;
+        }
+
+        .cursor-coords {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 99999;
+            font-family: monospace;
+            font-size: 9px;
+            color: var(--burnt-amber);
+            background: rgba(20, 20, 25, 0.85);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(201, 123, 58, 0.4);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        .cursor-graph-svg {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 99996;
         }
 
         /* Preloader */
@@ -2846,9 +2888,15 @@
         </div>
     </div>
 
-    <!-- Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
+    <!-- Dynamic Vector Grapher Cursor System -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring ring-1" id="cursor-ring-1"></div>
+    <div class="cursor-ring ring-2" id="cursor-ring-2"></div>
+    <div class="cursor-coords" id="cursor-coords"><span class="pulse-dot" style="width:5px;height:5px;"></span> <span id="coords-text">G-X:0 Y:0</span></div>
+    <svg class="cursor-graph-svg" id="cursor-graph-svg">
+        <line id="graph-line-1" stroke="rgba(201, 123, 58, 0.6)" stroke-width="1.5" stroke-dasharray="3,3" />
+        <line id="graph-line-2" stroke="rgba(123, 45, 66, 0.5)" stroke-width="1" stroke-dasharray="2,2" />
+    </svg>
 
     <!-- Developer Terminal Easter Egg -->
     <div class="terminal-overlay" id="terminal-overlay">
@@ -3749,38 +3797,70 @@
             }, 60);
         });
 
-        // 2. Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorRing = document.querySelector('.cursor-ring');
+        // 2. Interactive Vector Grapher Cursor System
+        const cursorDot = document.getElementById('cursor-dot');
+        const ring1 = document.getElementById('cursor-ring-1');
+        const ring2 = document.getElementById('cursor-ring-2');
+        const coordsEl = document.getElementById('cursor-coords');
+        const coordsText = document.getElementById('coords-text');
+        const line1 = document.getElementById('graph-line-1');
+        const line2 = document.getElementById('graph-line-2');
+
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
-        let ringX = mouseX, ringY = mouseY;
+        let ring1X = mouseX, ring1Y = mouseY;
+        let ring2X = mouseX, ring2Y = mouseY;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            if (cursorDot) cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
         });
 
-        function animateRing() {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-            requestAnimationFrame(animateRing);
+        function animateGrapherCursor() {
+            ring1X += (mouseX - ring1X) * 0.16;
+            ring1Y += (mouseY - ring1Y) * 0.16;
+            
+            ring2X += (ring1X - ring2X) * 0.10;
+            ring2Y += (ring1Y - ring2Y) * 0.10;
+
+            if (ring1) ring1.style.transform = `translate(${ring1X}px, ${ring1Y}px)`;
+            if (ring2) ring2.style.transform = `translate(${ring2X}px, ${ring2Y}px)`;
+            if (coordsEl) coordsEl.style.transform = `translate(${ring1X + 18}px, ${ring1Y - 18}px)`;
+            if (coordsText) coordsText.innerText = `G-X:${Math.round(mouseX)} Y:${Math.round(mouseY)}`;
+
+            if (line1) {
+                line1.setAttribute('x1', mouseX);
+                line1.setAttribute('y1', mouseY);
+                line1.setAttribute('x2', ring1X);
+                line1.setAttribute('y2', ring1Y);
+            }
+            if (line2) {
+                line2.setAttribute('x1', ring1X);
+                line2.setAttribute('y1', ring1Y);
+                line2.setAttribute('x2', ring2X);
+                line2.setAttribute('y2', ring2Y);
+            }
+
+            requestAnimationFrame(animateGrapherCursor);
         }
-        if (window.matchMedia("(pointer: fine)").matches) animateRing();
+        if (window.matchMedia("(pointer: fine)").matches) animateGrapherCursor();
 
         const interactables = document.querySelectorAll('a, button, input, textarea, .project-card, .magnetic, .term-dot');
         interactables.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursorRing.style.width = '45px'; cursorRing.style.height = '45px';
-                cursorRing.style.borderColor = 'var(--rich-burgundy)';
-                cursorRing.style.background = 'rgba(123, 45, 66, 0.1)';
+                if (ring1) {
+                    ring1.style.width = '45px'; ring1.style.height = '45px';
+                    ring1.style.borderColor = 'var(--rich-burgundy)';
+                    ring1.style.background = 'rgba(123, 45, 66, 0.1)';
+                }
             });
             el.addEventListener('mouseleave', () => {
-                cursorRing.style.width = '28px'; cursorRing.style.height = '28px';
-                cursorRing.style.borderColor = 'var(--burnt-amber)';
-                cursorRing.style.background = 'transparent';
+                if (ring1) {
+                    ring1.style.width = '28px'; ring1.style.height = '28px';
+                    ring1.style.borderColor = 'var(--burnt-amber)';
+                    ring1.style.background = 'transparent';
+                }
             });
         });
 
