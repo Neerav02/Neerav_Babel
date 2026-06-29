@@ -2892,7 +2892,6 @@
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring ring-1" id="cursor-ring-1"></div>
     <div class="cursor-ring ring-2" id="cursor-ring-2"></div>
-    <div class="cursor-coords" id="cursor-coords"><span class="pulse-dot" style="width:5px;height:5px;"></span> <span id="coords-text">G-X:0 Y:0</span></div>
     <svg class="cursor-graph-svg" id="cursor-graph-svg">
         <line id="graph-line-1" stroke="rgba(201, 123, 58, 0.6)" stroke-width="1.5" stroke-dasharray="3,3" />
         <line id="graph-line-2" stroke="rgba(123, 45, 66, 0.5)" stroke-width="1" stroke-dasharray="2,2" />
@@ -3801,8 +3800,6 @@
         const cursorDot = document.getElementById('cursor-dot');
         const ring1 = document.getElementById('cursor-ring-1');
         const ring2 = document.getElementById('cursor-ring-2');
-        const coordsEl = document.getElementById('cursor-coords');
-        const coordsText = document.getElementById('coords-text');
         const line1 = document.getElementById('graph-line-1');
         const line2 = document.getElementById('graph-line-2');
 
@@ -3826,8 +3823,6 @@
 
             if (ring1) ring1.style.transform = `translate(${ring1X}px, ${ring1Y}px)`;
             if (ring2) ring2.style.transform = `translate(${ring2X}px, ${ring2Y}px)`;
-            if (coordsEl) coordsEl.style.transform = `translate(${ring1X + 18}px, ${ring1Y - 18}px)`;
-            if (coordsText) coordsText.innerText = `G-X:${Math.round(mouseX)} Y:${Math.round(mouseY)}`;
 
             if (line1) {
                 line1.setAttribute('x1', mouseX);
