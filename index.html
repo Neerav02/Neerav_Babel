@@ -2640,19 +2640,18 @@
     <div class="terminal-overlay" id="terminal-overlay">
         <div class="terminal-window">
             <div class="terminal-header">
-                <div class="term-dot red" id="term-close"></div>
+                <div class="term-dot red" id="term-close" title="Close terminal"></div>
                 <div class="term-dot yellow"></div>
                 <div class="term-dot green"></div>
-                <div class="term-title">neerav@portfolio:~</div>
+                <div class="term-title">neerav@portfolio-shell:~ (v2.4-prod)</div>
             </div>
             <div class="terminal-body" id="terminal-body">
-                <div class="term-output system">NeeravOS v1.0.0 (tty1)</div>
-                <div class="term-output system">Type 'help' for a list of available commands.</div>
+                <div class="term-output system" style="color:#FFBD2E; margin-bottom:8px;">Welcome to Neerav Babel's Developer Shell (v2.4). Type <span style="color:#e3b341; font-weight:bold;">help</span> to list available commands.</div>
                 <div id="term-history"></div>
-                <div class="term-input-line">
-                    <span class="term-prompt">neerav@portfolio:~$</span>
-                    <input type="text" class="term-input" id="term-input" autocomplete="off" spellcheck="false">
-                </div>
+            </div>
+            <div style="padding: 12px 20px; background:#141414; border-top: 1px solid #333; display:flex; align-items:center; gap:10px;">
+                <span class="term-prompt" style="color:#5381E4; font-weight:bold; font-family:monospace;">neerav@dev:~$</span>
+                <input type="text" id="term-input" class="term-input" placeholder="type a command... (e.g. help, skills, projects, echoquery, contact)" autocomplete="off" spellcheck="false" autofocus>
             </div>
         </div>
     </div>
@@ -2661,26 +2660,23 @@
     <div class="chat-widget">
         <div class="chat-panel" id="chat-panel">
             <div class="chat-header">
-                <div class="chat-title"><span></span> Neerav AI</div>
+                <div class="chat-title"><span></span> Neerav AI Assistant</div>
                 <button class="chat-close" id="chat-close">&times;</button>
             </div>
             <div class="chat-body" id="chat-body">
-                <div class="chat-msg msg-ai">Hi! I'm Neerav's portfolio assistant. Ask me about his projects,
-                    availability, tech stack, or how he can help your product.</div>
+                <div class="chat-msg msg-ai">
+                    👋 Hi there! I'm Neerav's AI assistant. Ask me anything about his projects (EchoQuery, Waggy, One Man Office), skills, research, or availability!
+                </div>
             </div>
             <div class="chat-input-area">
-                <input type="text" class="chat-input" id="chat-input" placeholder="Ask anything...">
-                <button class="chat-send magnetic" id="chat-send">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                    </svg>
+                <input type="text" class="chat-input" id="chat-input" placeholder="Type your message..." autocomplete="off">
+                <button class="chat-send magnetic" id="chat-send" aria-label="Send">
+                    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                 </button>
             </div>
         </div>
-        <button class="chat-btn magnetic" id="chat-btn" aria-label="Open AI Chat">
-            <svg viewBox="0 0 24 24">
-                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
-            </svg>
+        <button class="chat-btn magnetic" id="chat-btn" aria-label="Open AI Assistant">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
         </button>
     </div>
 
@@ -3430,32 +3426,6 @@
         </div>
     </div>
 
-    <!-- Developer Terminal Modal -->
-    <div id="terminal-modal" class="terminal-modal">
-        <div class="terminal-window-popup">
-            <div class="terminal-topbar">
-                <div class="terminal-dots">
-                    <span class="terminal-dot-btn" style="background:#ff5f56; cursor:pointer;"
-                        id="term-close-dot"></span>
-                    <span class="terminal-dot-btn" style="background:#ffbd2e;"></span>
-                    <span class="terminal-dot-btn" style="background:#27c93f;"></span>
-                </div>
-                <div style="font-size:12px; color:#8b949e; font-weight:600;">neerav@portfolio-shell:~</div>
-                <div style="font-size:11px; color:#58a6ff;">v2.4-prod</div>
-            </div>
-            <div class="terminal-screen" id="term-screen">
-                <div>Welcome to Neerav Babel's Developer Shell. Type <span style="color:#e3b341;">help</span> to list
-                    commands.</div>
-                <br>
-            </div>
-            <div
-                style="padding: 10px 20px; background:#161b22; border-top: 1px solid #30363d; display:flex; align-items:center; gap:10px;">
-                <span class="term-prompt">neerav@dev:~$</span>
-                <input type="text" id="term-input" class="term-input"
-                    placeholder="type a command... (e.g. skills, projects, contact, clear)" autofocus>
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script>
@@ -4151,82 +4121,192 @@ supabase.channel('security-threats')
         });
 
         // 11. Developer Terminal CLI Logic
-        const termModal = document.getElementById('terminal-modal');
+        const termOverlay = document.getElementById('terminal-overlay');
         const termInput = document.getElementById('term-input');
-        const termScreen = document.getElementById('term-screen');
-        const termCloseDot = document.getElementById('term-close-dot');
+        const termBody = document.getElementById('terminal-body');
+        const termClose = document.getElementById('term-close');
         const openTermHint = document.getElementById('open-terminal-hint');
+        const termWindow = document.querySelector('.terminal-window');
 
         function openTerminal() {
-            termModal.classList.add('active');
-            setTimeout(() => termInput.focus(), 100);
+            if (!termOverlay) return;
+            termOverlay.classList.add('active');
+            setTimeout(() => { if (termInput) termInput.focus(); }, 150);
             document.body.style.overflow = 'hidden';
         }
 
         function closeTerminal() {
-            termModal.classList.remove('active');
+            if (!termOverlay) return;
+            termOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
         if (openTermHint) openTermHint.addEventListener('click', openTerminal);
-        if (termCloseDot) termCloseDot.addEventListener('click', closeTerminal);
+        if (termClose) termClose.addEventListener('click', closeTerminal);
+
+        if (termOverlay) {
+            termOverlay.addEventListener('click', (e) => {
+                if (e.target === termOverlay) closeTerminal();
+            });
+        }
+
+        if (termWindow) {
+            termWindow.addEventListener('click', () => {
+                if (termInput) termInput.focus();
+            });
+        }
 
         document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === '`') {
+            if (e.ctrlKey && (e.key === '`' || e.key === '~')) {
                 e.preventDefault();
-                if (termModal.classList.contains('active')) closeTerminal();
+                if (termOverlay && termOverlay.classList.contains('active')) closeTerminal();
                 else openTerminal();
             }
         });
 
         function printTermOutput(html) {
+            if (!termBody) return;
             const line = document.createElement('div');
             line.style.marginBottom = '8px';
+            line.style.lineHeight = '1.5';
             line.innerHTML = html;
-            termScreen.appendChild(line);
-            termScreen.scrollTop = termScreen.scrollHeight;
+            termBody.appendChild(line);
+            termBody.scrollTop = termBody.scrollHeight;
         }
 
-        termInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const cmd = termInput.value.trim();
-                termInput.value = '';
-                if (!cmd) return;
+        if (termInput) {
+            termInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const cmd = termInput.value.trim();
+                    termInput.value = '';
+                    if (!cmd) return;
 
-                printTermOutput(`<div><span style="color:#7fe435;">neerav@dev:~$</span> <span style="color:#fff;">${cmd}</span></div>`);
-                const c = cmd.toLowerCase();
+                    printTermOutput(`<div><span style="color:#5381E4; font-weight:bold;">neerav@dev:~$</span> <span style="color:#fff;">${cmd}</span></div>`);
+                    const c = cmd.toLowerCase();
 
-                if (c === 'help') {
-                    printTermOutput(`
-                        <div style="color:#8b949e;">Available commands:</div>
-                        <div style="color:#58a6ff;">  help      <span style="color:#c9d1d9;">- Show command list</span></div>
-                        <div style="color:#58a6ff;">  about     <span style="color:#c9d1d9;">- Print background summary</span></div>
-                        <div style="color:#58a6ff;">  skills    <span style="color:#c9d1d9;">- List technical stack</span></div>
-                        <div style="color:#58a6ff;">  projects  <span style="color:#c9d1d9;">- List featured applications</span></div>
-                        <div style="color:#58a6ff;">  rates     <span style="color:#c9d1d9;">- Display engagement details</span></div>
-                        <div style="color:#58a6ff;">  contact   <span style="color:#c9d1d9;">- Print email and phone</span></div>
-                        <div style="color:#58a6ff;">  clear     <span style="color:#c9d1d9;">- Clear screen</span></div>
-                        <div style="color:#58a6ff;">  exit      <span style="color:#c9d1d9;">- Close terminal window</span></div>
-                    `);
-                } else if (c === 'about') {
-                    printTermOutput('<div>Neerav Babel &bull; Full-Stack & AI Systems Engineer.<br>1 Year Freelance Experience | 10+ Client Projects | IEEE Researcher.</div>');
-                } else if (c === 'skills') {
-                    printTermOutput('<div>LANGUAGES: Python, JS/TS, SQL<br>BACKEND: FastAPI, Node.js, Flask, WebSockets, RabbitMQ, Redis<br>AI/ML: PyTorch, YOLOv11, LangChain, RAG, OpenAI/Groq<br>CLOUD: AWS, Docker, Kubernetes</div>');
-                } else if (c === 'projects') {
-                    printTermOutput('<div>[1] EcoStream AI (YOLOv11 + RAG)<br>[2] EchoQuery (Distributed Task Engine)<br>[3] Waggy (Live E-Commerce)<br>[4] PulseGoals (Hackathon Top 10)<br>[5] StrucBot (Gamified AI Evaluation)</div>');
-                } else if (c === 'rates') {
-                    printTermOutput('<div>Contract Engagements: Hourly or Fixed Project-Based.<br>Typically available within 48 hours for immediate deployment.</div>');
-                } else if (c === 'contact') {
-                    printTermOutput('<div>Email: babelneerav299@gmail.com | Phone: +91 9660920036<br>Calendly: calendly.com/babelneerav299/30min-phone-call</div>');
-                } else if (c === 'clear') {
-                    termScreen.innerHTML = '<div>Terminal cleared. Type <span style="color:#e3b341;">help</span> for commands.</div><br>';
-                } else if (c === 'exit') {
-                    closeTerminal();
-                } else {
-                    printTermOutput(`<div style="color:#ff7b72;">Command not found: ${cmd}. Type <span style="color:#e3b341;">help</span> for available commands.</div>`);
+                    if (c === 'help') {
+                        printTermOutput(`
+                            <div style="color:#8b949e; margin-top:4px;">Available commands:</div>
+                            <div style="color:#58a6ff;">  help        <span style="color:#c9d1d9;">- Show command list</span></div>
+                            <div style="color:#58a6ff;">  about       <span style="color:#c9d1d9;">- Print background summary</span></div>
+                            <div style="color:#58a6ff;">  skills      <span style="color:#c9d1d9;">- List technical stack</span></div>
+                            <div style="color:#58a6ff;">  projects    <span style="color:#c9d1d9;">- List featured applications</span></div>
+                            <div style="color:#58a6ff;">  echoquery   <span style="color:#c9d1d9;">- Print EchoQuery AI specs</span></div>
+                            <div style="color:#58a6ff;">  waggy       <span style="color:#c9d1d9;">- Print Waggy Pet Shop details</span></div>
+                            <div style="color:#58a6ff;">  contact     <span style="color:#c9d1d9;">- Print email, phone & booking link</span></div>
+                            <div style="color:#58a6ff;">  clear       <span style="color:#c9d1d9;">- Clear terminal screen</span></div>
+                            <div style="color:#58a6ff;">  exit        <span style="color:#c9d1d9;">- Close shell window</span></div>
+                        `);
+                    } else if (c === 'about') {
+                        printTermOutput('<div style="color:#7FE435;">Neerav Babel &bull; Full-Stack & AI Systems Engineer.<br>Final-year CS Student @ Jain University | 1 Year Freelance Experience | IEEE Researcher.</div>');
+                    } else if (c === 'skills') {
+                        printTermOutput('<div style="color:#79C0FF;">LANGUAGES: Python, JS/TS, SQL, HTML5/CSS3<br>AI/ML: PyTorch, YOLOv11, LangChain, RAG, WebSockets<br>BACKEND: FastAPI, Node.js, Flask, Redis Redlock, RabbitMQ DLQ<br>CLOUD: AWS, Docker, Kubernetes, Vercel, Render</div>');
+                    } else if (c === 'projects') {
+                        printTermOutput('<div style="color:#E3B341;">[1] EchoQuery AI (Sub-second Speech Engine & Live Telemetry)<br>[2] One Man Office AI (Autonomous Agency Suite)<br>[3] Waggy (Live High-Concurrency E-Commerce)<br>[4] EcoStream AI (YOLOv11 Waste Forecasting & RAG)<br>[5] PulseGoals (AtomQuest Top 10 Finalist)</div>');
+                    } else if (c === 'echoquery') {
+                        printTermOutput('<div style="color:#58A6FF;">⚡ EchoQuery AI: Sub-second audio speech engine (&lt;950ms), Redis Redlock distributed sync, RabbitMQ DLQ self-healing recovery, &amp; automated executive HTML email reporter.<br>Live Demo: https://echoquery.onrender.com</div>');
+                    } else if (c === 'waggy') {
+                        printTermOutput('<div style="color:#FF7B72;">🐕 Waggy Pet Shop: Gevent-backed WebSockets (&lt;50ms updates), Stripe checkout, Groq LLM chatbot AI (&lt;2s response time).<br>Live Demo: https://waggy-pet-shop-ubkp.onrender.com</div>');
+                    } else if (c === 'contact') {
+                        printTermOutput('<div style="color:#7FE435;">📧 Email: babelneerav299@gmail.com | 📞 Phone: +91 9660920036<br>📅 Calendly: https://calendly.com/babelneerav299/30min-phone-call</div>');
+                    } else if (c === 'clear') {
+                        termBody.innerHTML = '<div style="color:#FFBD2E; margin-bottom:8px;">Terminal cleared. Type <span style="color:#e3b341; font-weight:bold;">help</span> for commands.</div>';
+                    } else if (c === 'exit') {
+                        closeTerminal();
+                    } else {
+                        printTermOutput(`<div style="color:#ff7b72;">Command not found: ${cmd}. Type <span style="color:#e3b341; font-weight:bold;">help</span> for available commands.</div>`);
+                    }
                 }
+            });
+        }
+
+        // 12. AI Chatbot Assistant Logic
+        const chatBtn = document.getElementById('chat-btn');
+        const chatPanel = document.getElementById('chat-panel');
+        const chatClose = document.getElementById('chat-close');
+        const chatBody = document.getElementById('chat-body');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+
+        if (chatBtn && chatPanel) {
+            chatBtn.addEventListener('click', () => {
+                chatPanel.classList.toggle('active');
+                if (chatPanel.classList.contains('active') && chatInput) {
+                    setTimeout(() => chatInput.focus(), 200);
+                }
+            });
+        }
+
+        if (chatClose && chatPanel) {
+            chatClose.addEventListener('click', () => {
+                chatPanel.classList.remove('active');
+            });
+        }
+
+        function appendChatMessage(sender, text) {
+            if (!chatBody) return;
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-msg ${sender === 'user' ? 'msg-user' : 'msg-ai'}`;
+            msgDiv.innerHTML = text;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            if (!chatBody) return null;
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.id = 'active-typing-indicator';
+            indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            chatBody.appendChild(indicator);
+            chatBody.scrollTop = chatBody.scrollHeight;
+            return indicator;
+        }
+
+        function removeTypingIndicator() {
+            const ind = document.getElementById('active-typing-indicator');
+            if (ind) ind.remove();
+        }
+
+        function generateAIResponse(query) {
+            const q = query.toLowerCase();
+            if (q.includes('echoquery') || q.includes('speech') || q.includes('audio') || q.includes('latency')) {
+                return "<strong>EchoQuery AI</strong> is Neerav's flagship media intelligence engine! It achieves sub-second speech recognition (&lt;950ms), uses Redis Redlock for distributed concurrency, RabbitMQ DLQ for zero data loss self-healing, and streams real-time tokens over WebSockets. You can test it live at <a href='https://echoquery.onrender.com' target='_blank' style='color:#C97B3A;'>echoquery.onrender.com</a>!";
+            } else if (q.includes('waggy') || q.includes('dog') || q.includes('pet') || q.includes('shop') || q.includes('e-commerce')) {
+                return "<strong>Waggy Pet Shop</strong> is a high-concurrency live e-commerce platform! Built with Next.js, Flask, and Gevent WebSockets (&lt;50ms sync), Stripe payments, and a Groq LLM support bot. Check it out at <a href='https://waggy-pet-shop-ubkp.onrender.com' target='_blank' style='color:#C97B3A;'>waggy-pet-shop-ubkp.onrender.com</a>!";
+            } else if (q.includes('office') || q.includes('one man') || q.includes('agency')) {
+                return "<strong>One Man Office AI</strong> is Neerav's autonomous agency suite built with LangChain & PostgreSQL vector storage. It automates client contracts, invoice audits, and daily task routing!";
+            } else if (q.includes('skill') || q.includes('stack') || q.includes('python') || q.includes('react')) {
+                return "Neerav specializes in Python, FastAPI, React/Next.js, LangChain, PyTorch, YOLOv11, Redis, RabbitMQ, Docker, and AWS. He excels at building high-performance backend systems and AI pipelines!";
+            } else if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('call')) {
+                return "You can reach Neerav at <strong>babelneerav299@gmail.com</strong> or call <strong>+91 9660920036</strong>. You can also book a free 30-min call on his Calendly!";
+            } else {
+                return "Thanks for reaching out! Neerav Babel is a Full-Stack & AI Systems Engineer. Feel free to ask about his projects (EchoQuery, Waggy, EcoStream), tech stack, or booking a project call!";
             }
-        });
+        }
+
+        function handleSendChat() {
+            if (!chatInput) return;
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            appendChatMessage('user', text);
+            chatInput.value = '';
+
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                const reply = generateAIResponse(text);
+                appendChatMessage('ai', reply);
+            }, 700);
+        }
+
+        if (chatSend) chatSend.addEventListener('click', handleSendChat);
+        if (chatInput) {
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') handleSendChat();
+            });
+        }
 
         // 11. Code Typing Background Logic (Experience Section)
         const codeSnippet = `import torch
